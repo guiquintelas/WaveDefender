@@ -1,0 +1,259 @@
+FASE DE TESTES
+
+-Criar pathing para perseguiçao //feito 10/06/2015
+	achar angulo ate alvo e ir atualizando angulo
+	raio para sair do modo idle e ativar modo chase
+	
+-Criar pseudo player//feito 10/06/2015
+	speed um pouco maior q mobs
+	
+-Mobs com velocidades minimamente aleatórias //feito 10/06/2015
+	e tamanhos
+	
+-Sistema de colisão//feito 11/06/2015
+	mob-mob
+	player-mob
+	
+-Raio para mob atacar // 11/06/2015
+	sair de idle para chase
+	raio maior ainda para sair de chase e ir pra idle
+	
+-Sistema de ataque //feito 14/06/2015
+	usar colisao para detectar ataque // feito 12/06/2015
+	ter um delay entre ataques//feito 12/06/2015
+	ter um periodo de invunerabilidade a knockback //feito 12/06/2015
+	ataque para monstros e player //FEITO 13/06/2015
+	
+	-Animaçao para mostrar hit(valor do damage) do ataque //feito 14/06/2015
+		animaçoes em curva, Jpane se move com um angulo em frequente mudança, dando um aspecto de curva //feito, nao foi jpane
+		diminuindo o alpha
+
+-Barras de vida//feito 13/06/2015
+	verde-amarelo-vermelho
+	só aparecer quado mob estiver ferido
+	
+-Knockback //feito 14/06/2015
+	no player //feito 12/06/2015
+	e em mobs//feito 14/06/2015
+	animaçao ou instantaneo // animaçao feito 17/06/2015
+	invunerabilidade durante knockback? //sim somente a knockbacks feito 12/06/2015
+	
+-ataque de projetil player//feito 14/06/2015
+	rect q testa colisão com mobs
+	atira na direçao do mouse
+	range maximo
+	
+-ataques especiais
+	monstro mago atira //feito 18/06/2015
+	magias em area 
+	tiro de grounded // feito 16/06/2015
+	
+-Status
+	grounded //feito 16/06/2015
+	atordoado
+	envenenado //feito 18/06/2015
+	lentidao //feito 18/06/2015
+	velocidade aumentada
+	
+-Regeneraçao passiva // feito 15/06/2015
+	ativa depois de estar fora de combate?
+	
+-Progreçao do player//feito 28/06/2015
+	ganhar exp com cada monstro
+	passar de level e precisar cada vez mais de exp para o proximo
+	ficar mais forte com cada level
+	
+	-Barra de exp
+		localizada na barra de ferramentas do jogo
+		
+-Barra de ferramentas (GUI) //28/06/2015
+	mostrando a vida // feito 15/06/2015
+	exp
+	status do player e suas duraçoes// feito 16/06/2015
+	dano //feito 15/06/2015
+	speed //feito 15/06/2015
+	velAtk //feito 15/06/2015
+	display de inimigo ao passar o mouse // feito 15/06/2015
+	
+	-Selecionador de atacks do player(melee e ranged por ex)
+		com uma hotkey para cada um
+		uma imagem para descrever(arma para ranged e espada para melee)
+
+-Raças para monstros
+
+-Particulas /feito 16/06/2015
+	criador de particulas com:
+	forma das particulas
+	cor
+	delay
+	e frequencia
+
+-Mostrar nome do monstro ao passar com o mouse em cima // feito 16/06/2015
+
+-Mago// feito 18/06/2015
+	atk à distancia
+	atk deixa lento
+	fase inrritado(teleporta para longe e aumenta o atk speed)
+	
+-Druida//feito 02/07/2015
+	msm range do mago
+	heala inimigos q tenham tomado dano em uma range
+	animaçao de morte igual a grounded
+	invoca dois ursos
+	
+	-Urso
+		anda sempre em um range do druida
+		quando morto deixa outros ursos putos e o druida
+		quando o druida ta puto, tambem fica puto
+		ataque grounded
+		atributos baseado dos do druida
+		
+	
+	
+
+-Criar area perto de player q nao nasça monstros pertos// feito 19/06/2015
+
+
+
+-Criar funçao q pinte os Mobs pelo tamanho de suas coordenadas Y//feito 25/06/2015
+	organizar em ordem crescente o arraylist Mob.todosMobs e pintar na tela seguindo a ordem
+	
+-Criar possas de sangue //feito 26/06/2015
+	pinta uma img de sangue na img do campo inicial
+	vao acumulando ao decorrer das fases
+	orc com sangue verde
+	mago com sangue roxo
+	
+	-Criador de sangue aleatório
+		cria x possas por hit
+		possas com x de alpha 
+
+-Implementar por completo senhora Orc //feito 23/06/2015
+	Animaçao parada//feito 21/06/2015
+	Animaçao andando
+	Animaçao tomarHit
+	Animaçao darHit
+	
+
+	
+-Sombras //feito 25/06/2015
+	classe sombras tipo barra de vida, onde cada mob tera a sua
+	metodo pintar
+	metodo update para atualizar x e y
+	
+
+
+-Mapa extendido
+	player anda e mais mapa aparece
+	mapa 1920x960
+	imgParaPintar nao se passa de uma subimage do mapa inteiro
+	
+	
+-Incluir sons //feito 06/07/2015
+	Slick2d (LWJGL, Jorbis Jogg)
+	Som de atirar
+	som de tiro acertando inimigo
+	
+-Paredes//feito 15/07/2015
+	sistema de tiles para colisão
+	paredes no sistema de tiles tbm
+	tiles 	
+	
+-Path Finding
+	classe prórpia ou metodos
+	baseado no sistema de tiles
+	levando a width e heigh do mob como fator
+	
+
+	
+(Alto)
+
+-Misseis que se dividem no ar
+	em x distancia vs quando chega ao ponto do mouse em q foi criado	
+	se dividir mais de uma vez
+	animaçao na separaçao(particulas)
+	velocidades maiores a cada separaçao(simulando explosao)
+
+-Traps (posicionadas em tiles(facilita a detecção) vs posicionada livremente)
+	uso com possivel mana, facil implementação
+	tempo de recarga
+	pode causar status, com ou sem aprimoramentos
+	aprimoramento, usado por pontos ganhos ao passar de nivel
+	player pode passar por cima
+	
+-Skills
+	destravadas por nivel (automaticamente?)
+	aprimoradas com pontos de level up, dinamica de destravar as skills focadas
+	
+	-Mana// feito 07/08/2015
+		regeneração passiva (e por skill?)
+		usada na utilizaçao de skills
+	
+	-Classes
+		skills unicas para cada classe
+		diferença na distribuiçao de atributos(vida, atk speed, velocidade, dano, mana)
+		
+	-Skill com criaçao de tiles especiais
+		depois da destruiçao de um projetil
+		
+		-Tiles Especiais
+			tipo tibia
+			fogo
+			veneeno
+			snow
+			espinhos
+
+-Vampiro// feito 25/07/2015
+	pouca vida(aumenta max? - sim)
+	muito dano
+	rapido
+	
+	sfx de cura diferente
+	cura metade de dano dado
+	pode ficar invisivel
+	
+	-Invisivel Status
+		player-nao chama a atençao de monstros, fica transparente
+		monstro-nao pode ser visto pelo player, sai pequenas particulas(rajadas)
+
+
+-Armadilhas em Area
+	tras explosivas
+		knockback coletivo
+		deixam status de fogo em area(dano por segundo igual veneno)
+			fogo se espalha quando toca em outros inimigos<------
+		
+			particulas de fumaça saindo
+			luz das chamas
+			chamas
+				luzes amarelas, laranjas e vermelhas com fagulhas saindo
+		animaçao de explosao
+		img diferente in game
+		
+	range como opçao de aprimoramento
+		indicador de range atual vs range novo
+		
+
+Imgs na SkillTree
+
+-Luz
+	bruta//feito 10/12/2015
+	blur(com efeito de borrão, com delay)
+	
+Chefoes
+
+-Menu Inicial
+	jogar
+	opçoes
+	sobre
+	sair
+	
+-Mais Armaduras
+	esmeralda (atk speed, mana regen)
+	osso(dano, pouco def) ou buff diferentes(unicos)	
+	
+-Sistema de Listener
+	classe com funçoes para add ou remover funçoes de listener
+	
+	
+	
