@@ -7,8 +7,8 @@ import wave.tools.Util;
 
 public class StatusGrondedGUI extends StatusGUI{
 
-	public StatusGrondedGUI(int duraçao) {
-		super(duraçao, "Grounded");
+	public StatusGrondedGUI(int duracao) {
+		super(duracao, "Grounded");
 	}
 
 	public void update() {
@@ -28,7 +28,7 @@ public class StatusGrondedGUI extends StatusGUI{
 	}
 
 	@Override
-	public String getDescriçao() {
+	public String getDescricao() {
 		return "GROUNDED: Voce foi atingido e nao pode se mexer.";
 	}
 

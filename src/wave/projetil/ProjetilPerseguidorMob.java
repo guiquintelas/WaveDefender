@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import wave.graphics.SombraDinamica;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.mob.Player;
 import wave.principal.Principal;
 
@@ -46,11 +46,11 @@ public abstract class ProjetilPerseguidorMob extends Projetil{
 		updateAngulo();
 		move();
 		checaColisaoPlayer();
-		checaAutoDestruiçao();
+		checaAutoDestruicao();
 		sombraD.update();
 	}
 
-	protected void checaAutoDestruiçao() {
+	protected void checaAutoDestruicao() {
 		double novaD = Math.sqrt(Math.pow(getXCentro() - Player.getPlayer().getXCentro(), 2) + Math.pow(getYCentro() - Player.getPlayer().getYCentro(), 2));
 		if (distanciaTemp + 3 < novaD && distanciaTemp < 50) {
 			if (timerAutoD != null) {
@@ -61,7 +61,7 @@ public abstract class ProjetilPerseguidorMob extends Projetil{
 			timerAutoD = new Timer(5, new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (Principal.tickTotal >= tickAtual + DELAY_AUTOD) {
-						autoDestruiçao();
+						autoDestruicao();
 						removeProjetil();
 						timerAutoD.stop();
 					}
@@ -74,8 +74,8 @@ public abstract class ProjetilPerseguidorMob extends Projetil{
 		distanciaTemp = novaD;
 	}
 	
-	protected void autoDestruiçao() {
-		Animaçao.aniFumaçaPadrao(getXCentro(), getYCentro());
+	protected void autoDestruicao() {
+		Animacao.aniFumacaPadrao(getXCentro(), getYCentro());
 	}
 
 	private void move() {

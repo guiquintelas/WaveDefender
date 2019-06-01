@@ -45,7 +45,7 @@ public abstract class Monstro extends Mob {
 	
 	//SFXs
 	private static final RandomSFXGrupo morteSFX = new RandomSFXGrupo(new String[]{"/SFX/morte1.ogg", "/SFX/morte2.ogg", "/SFX/morte3.ogg"});
-	protected static final RandomSFXGrupo lançaProjetilSFX = new RandomSFXGrupo(new String[]{"/SFX/projetilGrounded1.ogg", "/SFX/projetilGrounded2.ogg", "/SFX/projetilGrounded3.ogg"});
+	protected static final RandomSFXGrupo lancaProjetilSFX = new RandomSFXGrupo(new String[]{"/SFX/projetilGrounded1.ogg", "/SFX/projetilGrounded2.ogg", "/SFX/projetilGrounded3.ogg"});
 	
 	//todos monstros
 	public static ArrayList<Monstro> todosMontros = new ArrayList<Monstro>();

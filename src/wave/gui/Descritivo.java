@@ -18,7 +18,7 @@ public abstract class Descritivo extends Dimensional{
 		todosDescritivos.add(this);
 	}
 	
-	public abstract String getDescriçao();
+	public abstract String getDescricao();
 	
 	
 	public boolean checaColisao() {
@@ -26,7 +26,7 @@ public abstract class Descritivo extends Dimensional{
 		
 		if (JanelaJogo.xMouse > getX() && JanelaJogo.xMouse < getX() + getWidth()) {
 			if (JanelaJogo.yMouse > getY() && JanelaJogo.yMouse < getY() + getHeight()) {
-				DescriçaoBox.criar(getDescriçao());
+				DescricaoBox.criar(getDescricao());
 				return true;
 			}
 		}
@@ -39,7 +39,7 @@ public abstract class Descritivo extends Dimensional{
 			if (todosDescritivos.get(i).checaColisao()) return;
 		}
 		
-		DescriçaoBox.setVisible(false);
+		DescricaoBox.setVisible(false);
 	}
 	
 	public boolean isAtivo() {

@@ -6,7 +6,7 @@ public class MedievalHelmet extends Equip{
 	private static final BufferedImage img = Equip.armorSheet.getSubimage(0, 40, 32, 18);
 
 	public MedievalHelmet(int x, int y) {
-		super(x, y, 32, 18, Equip.CABEÇA);
+		super(x, y, 32, 18, Equip.CABECA);
 	}
 
 	@Override

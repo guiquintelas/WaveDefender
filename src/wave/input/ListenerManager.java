@@ -33,7 +33,6 @@ public class ListenerManager implements java.awt.event.MouseListener, java.awt.e
 	private static HashMap<Integer, ArrayList<KeyListener>> mapKey = new HashMap<Integer, ArrayList<KeyListener>>();
 
 	public void init(JFrame janela) {
-		System.out.println("MEEEERDA");
 		janela.getContentPane().addMouseListener(this);
 		janela.getContentPane().addMouseMotionListener(this);
 		janela.addKeyListener(this);

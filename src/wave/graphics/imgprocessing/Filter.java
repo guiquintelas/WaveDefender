@@ -156,7 +156,7 @@ public class Filter {
 		return imgFinal;
 	}
 	
-	public static BufferedImage gaussianBlur(BufferedImage img, int kernelSize, double força) {
+	public static BufferedImage gaussianBlur(BufferedImage img, int kernelSize, double forca) {
 		BufferedImage imgFinal = new BufferedImage(img.getWidth(), img.getHeight(), img.getType());
 		int width = imgFinal.getWidth();
 		
@@ -168,7 +168,7 @@ public class Filter {
 		
 		for (int yOff = -(kernelSize - 1)/2; yOff <= (kernelSize - 1)/2; yOff++) {
 			for (int xOff = -(kernelSize - 1)/2; xOff <= (kernelSize - 1)/2; xOff++) {
-				kernel[xOff + (kernelSize - 1)/2][yOff + (kernelSize - 1)/2] = 1/(float)Math.pow(força, Math.abs(xOff) + Math.abs(yOff));
+				kernel[xOff + (kernelSize - 1)/2][yOff + (kernelSize - 1)/2] = 1/(float)Math.pow(forca, Math.abs(xOff) + Math.abs(yOff));
 			}
 		}
 		

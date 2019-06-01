@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import wave.audio.RandomSFXGrupo;
 import wave.graphics.BalaoDeFala;
-import wave.graphics.ModValorAnimaçao;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.ModValorAnimacao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.item.Dropper;
 import wave.particula.CriadorDeParticulas;
@@ -24,7 +24,7 @@ public class Druida extends Monstro implements Ranged {
 	private static boolean primeiroDruida = true;
 
 	private ArrayList<Urso> ursos = new ArrayList<Urso>();
-	private Animaçao ani = new Animaçao(getXCentro(), getYCentro(), Animaçao.groundedImgs, 3);
+	private Animacao ani = new Animacao(getXCentro(), getYCentro(), Animacao.groundedImgs, 3);
 	
 	private Luz luz = null;
 	
@@ -88,7 +88,7 @@ public class Druida extends Monstro implements Ranged {
 				Mob.groundedSFX.play();
 				
 				final Luz luzAni = new Luz(ani, ani.getWidth(), 200, 200, 200, 100, 15, true, true, 0, 0);
-				luzAni.forçaVar.addAcaoNaFila(new ActionQueue() {
+				luzAni.forcaVar.addAcaoNaFila(new ActionQueue() {
 					public boolean action() {
 						luzAni.desativar(70);
 						return true;
@@ -144,13 +144,13 @@ public class Druida extends Monstro implements Ranged {
 			Urso urso = new Urso(this);
 			ursos.add(urso);
 			
-			Animaçao ani = new Animaçao(urso.getXCentro(), urso.getYSpriteCentro(), Animaçao.magicImgs, 2);
+			Animacao ani = new Animacao(urso.getXCentro(), urso.getYSpriteCentro(), Animacao.magicImgs, 2);
 			ani.setScale(.25f);
 			ani.setSeguindo(urso);	
 			ani.start();
 			
 			final Luz luz = new Luz(urso, 50, 50, 150, 200, 100, 15, true, true, 0, 0);
-			luz.forçaVar.addAcaoNaFila(new ActionQueue() {
+			luz.forcaVar.addAcaoNaFila(new ActionQueue() {
 				public boolean action() {
 					luz.desativar(35);
 					return true;
@@ -223,11 +223,11 @@ public class Druida extends Monstro implements Ranged {
 		if (getVida() > getVidaMax()) {
 			setVida(getVidaMax());
 		}
-		int mudançaVida = getVida() - vidaAntes;
+		int mudancaVida = getVida() - vidaAntes;
 
-		if (mudançaVida > 0) {
-			System.out.println(toString() + " healou " + mudançaVida + " de vida");
-			new ModValorAnimaçao(getX(), getYSprite(), mudançaVida, Color.GREEN);
+		if (mudancaVida > 0) {
+			System.out.println(toString() + " healou " + mudancaVida + " de vida");
+			new ModValorAnimacao(getX(), getYSprite(), mudancaVida, Color.GREEN);
 			healSFX.play();
 		}
 

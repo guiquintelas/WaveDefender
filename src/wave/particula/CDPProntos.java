@@ -2,7 +2,7 @@ package wave.particula;
 
 import java.awt.Color;
 
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.principal.Dimensional;
 import wave.tools.Variator;
@@ -25,7 +25,7 @@ public class CDPProntos {
 	}
 	
 	public static CriadorDeParticulas fogo(Dimensional d, int xOri, int yOri, int width, int height) {
-		CriadorDeParticulas particulasFogo = new CriadorDeParticulas(xOri, yOri, width, height, Animaçao.fogoImgs, .2f, 3, (width * height) / 25);
+		CriadorDeParticulas particulasFogo = new CriadorDeParticulas(xOri, yOri, width, height, Animacao.fogoImgs, .2f, 3, (width * height) / 25);
 		particulasFogo.setSpeed(.5);
 		particulasFogo.setAngulo(90, 20);
 		particulasFogo.addColor(Color.YELLOW);

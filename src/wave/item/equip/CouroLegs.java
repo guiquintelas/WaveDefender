@@ -22,12 +22,12 @@ public class CouroLegs extends Equip{
 
 	@Override
 	public String toString() {
-		return "Calças de Couro";
+		return "Calcas de Couro";
 	}
 
 	@Override
 	public String getText() {
-		return "Uma calça que mais parece saia. Defesa +2.";
+		return "Uma calca que mais parece saia. Defesa +2.";
 	}
 	
 	

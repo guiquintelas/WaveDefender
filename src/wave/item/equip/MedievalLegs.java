@@ -20,7 +20,7 @@ public class MedievalLegs extends Equip {
 
 	@Override
 	public String toString() {
-		return "Calças Medievais";
+		return "Calcas Medievais";
 	}
 
 	@Override

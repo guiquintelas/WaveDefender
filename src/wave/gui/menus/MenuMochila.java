@@ -44,7 +44,7 @@ public class MenuMochila {
 
 	// para mover
 	private static MenuMochilaSlot slotDrag;
-	//para a descriçao
+	//para a descricao
 	private static MenuMochilaSlot mouseSelected;
 	
 	//listeners
@@ -289,11 +289,11 @@ public class MenuMochila {
 	public static void abrirMenu() {
 		slotDrag = null;
 
-		if (!Principal.menuOpçoes() && Player.getPlayer().mochila != null && !Principal.menuLevel) {
+		if (!Principal.menuOpcoes() && Player.getPlayer().mochila != null && !Principal.menuLevel) {
 			update();
 			Principal.menuMochila = true;
 			if (primeiraVez) {
-				new BalaoDeFala("Eu posso usar Potions de Vida apertando a tecla 1, mas tente guardar para situações de perigo!", Player.getPlayer(), 250);
+				new BalaoDeFala("Eu posso usar Potions de Vida apertando a tecla 1, mas tente guardar para situacões de perigo!", Player.getPlayer(), 250);
 				primeiraVez = false;
 			}
 			

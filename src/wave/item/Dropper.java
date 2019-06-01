@@ -24,16 +24,16 @@ import wave.tools.Util;
 public class Dropper {
 	public static final String POTION_VIDA = "Potion de Vida";
 	public static final String POTION_MANA = "Potion de Mana";
-	public static final String POTION_FORÇA = "Potion de Força";
+	public static final String POTION_FORCA = "Potion de Forca";
 	public static final String MOCHILA = "Mochila";
 	public static final String MOCHILA_ADV = "MochilaAdv";
 	public static final String MOCHILA_MAL = "Mochila do Mal";
 	public static final String MOCHILA_CHIQUE = "Mochila Chique";
 	public static final String COURO_BOTA = "Botas de Couro";
-	public static final String COURO_LEGS = "Calças de Couro";
+	public static final String COURO_LEGS = "Calcas de Couro";
 	public static final String COURO_HELMET = "Chapéu de Couro";
 	public static final String COURO_ARMOR = "Armadura de Couro";
-	public static final String MEDIEVAL_LEGS = "Calças Medievais";
+	public static final String MEDIEVAL_LEGS = "Calcas Medievais";
 	public static final String MEDIEVAL_HELMET = "Helmet Medieval";
 	public static final String MEDIEVAL_ARMOR = "Armadura Medieval";
 	public static final String MEDIEVAL_BOTA = "Botas Medievais";
@@ -150,8 +150,8 @@ public class Dropper {
 				itensD.add(new MochilaAdv(xCentro + randX, yCentro + randY));
 				break;
 
-			case POTION_FORÇA:
-				itensD.add(new PotionForça(xCentro + randX, yCentro + randY));
+			case POTION_FORCA:
+				itensD.add(new PotionForca(xCentro + randX, yCentro + randY));
 				break;
 				
 			case MOCHILA_MAL:

@@ -6,7 +6,7 @@ public class CouroHelmet extends Equip{
 	private static final BufferedImage img = Equip.armorSheet.getSubimage(0, 0, 32, 32);
 
 	public CouroHelmet(int x, int y) {
-		super(x, y, 32, 32, Equip.CABEÇA);
+		super(x, y, 32, 32, Equip.CABECA);
 		sombra.setHeightOff(-8);
 		sombra.setWidthOff(-9);
 		sombra.setYOff(-5);

@@ -218,14 +218,14 @@ public class MenuOpcoes {
 	
 	
 	public static void update() {
-		barraVidaAtivada.setVisible(Principal.menuOpçoes());
-		barraVidaInvertida.setVisible(Principal.menuOpçoes());
-		posC.setVisible(Principal.menuOpçoes());
-		posB.setVisible(Principal.menuOpçoes());
-		posD.setVisible(Principal.menuOpçoes());
-		posE.setVisible(Principal.menuOpçoes());
-		muteMusic.setVisible(Principal.menuOpçoes());
-		muteSfx.setVisible(Principal.menuOpçoes());
+		barraVidaAtivada.setVisible(Principal.menuOpcoes());
+		barraVidaInvertida.setVisible(Principal.menuOpcoes());
+		posC.setVisible(Principal.menuOpcoes());
+		posB.setVisible(Principal.menuOpcoes());
+		posD.setVisible(Principal.menuOpcoes());
+		posE.setVisible(Principal.menuOpcoes());
+		muteMusic.setVisible(Principal.menuOpcoes());
+		muteSfx.setVisible(Principal.menuOpcoes());
 		musicSlider.setAtivo(!BackMusic.isMute());
 		sfxSlider.setAtivo(!SoundEffect.isMute());
 	}
@@ -250,7 +250,7 @@ public class MenuOpcoes {
 		g.drawString(":Ativada", x + WIDTH - 70, y + 130);
 		g.drawString(":Invertida", x + WIDTH - 80, y + 110);
 		
-		g.drawString("Posição:  ", x + 10, y + 120);
+		g.drawString("Posicão:  ", x + 10, y + 120);
 		g.drawLine(x + 100, y + 115, x + 110, y + 115);
 		g.drawLine(x + 105, y + 110, x + 105, y + 120);
 		

@@ -86,7 +86,7 @@ public class Grafico {
 		g.setColor(cor);
 		
 		if (listaSel == ani) g.setColor(Color.YELLOW);
-		g.drawString("Animações", 30, JanelaJogo.HEIGHT/2);
+		g.drawString("Animacões", 30, JanelaJogo.HEIGHT/2);
 		g.setColor(cor);
 		
 		if (listaSel == exp) g.setColor(Color.YELLOW);

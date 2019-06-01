@@ -37,7 +37,9 @@ public class TrapFogo extends Trap{
 
 	@Override
 	public void update() {
-		fogo.update(x, y);
+		if (fogo != null) {
+			fogo.update(x, y);
+		}
 	}
 	
 	

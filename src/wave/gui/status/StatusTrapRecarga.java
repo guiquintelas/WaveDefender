@@ -6,8 +6,8 @@ import wave.tools.Util;
 
 public class StatusTrapRecarga extends StatusGUI{
 
-	public StatusTrapRecarga(int duraçao) {
-		super(duraçao, "trapRecarga");
+	public StatusTrapRecarga(int duracao) {
+		super(duracao, "trapRecarga");
 	}
 
 	@Override
@@ -16,7 +16,7 @@ public class StatusTrapRecarga extends StatusGUI{
 	}
 
 	@Override
-	public String getDescriçao() {
+	public String getDescricao() {
 		return "RECARREGANDO ARMADLHA: Armadilha     usada recentemente. espere até que possa usa-la novamente.";
 	}
 

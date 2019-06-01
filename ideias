@@ -1,6 +1,6 @@
 FASE DE TESTES
 
--Criar pathing para perseguiçao //feito 10/06/2015
+-Criar pathing para perseguicao //feito 10/06/2015
 	achar angulo ate alvo e ir atualizando angulo
 	raio para sair do modo idle e ativar modo chase
 	
@@ -24,8 +24,8 @@ FASE DE TESTES
 	ter um periodo de invunerabilidade a knockback //feito 12/06/2015
 	ataque para monstros e player //FEITO 13/06/2015
 	
-	-Animaçao para mostrar hit(valor do damage) do ataque //feito 14/06/2015
-		animaçoes em curva, Jpane se move com um angulo em frequente mudança, dando um aspecto de curva //feito, nao foi jpane
+	-Animacao para mostrar hit(valor do damage) do ataque //feito 14/06/2015
+		animacoes em curva, Jpane se move com um angulo em frequente mudanca, dando um aspecto de curva //feito, nao foi jpane
 		diminuindo o alpha
 
 -Barras de vida//feito 13/06/2015
@@ -35,12 +35,12 @@ FASE DE TESTES
 -Knockback //feito 14/06/2015
 	no player //feito 12/06/2015
 	e em mobs//feito 14/06/2015
-	animaçao ou instantaneo // animaçao feito 17/06/2015
+	animacao ou instantaneo // animacao feito 17/06/2015
 	invunerabilidade durante knockback? //sim somente a knockbacks feito 12/06/2015
 	
 -ataque de projetil player//feito 14/06/2015
 	rect q testa colisão com mobs
-	atira na direçao do mouse
+	atira na direcao do mouse
 	range maximo
 	
 -ataques especiais
@@ -55,10 +55,10 @@ FASE DE TESTES
 	lentidao //feito 18/06/2015
 	velocidade aumentada
 	
--Regeneraçao passiva // feito 15/06/2015
+-Regeneracao passiva // feito 15/06/2015
 	ativa depois de estar fora de combate?
 	
--Progreçao do player//feito 28/06/2015
+-Progrecao do player//feito 28/06/2015
 	ganhar exp com cada monstro
 	passar de level e precisar cada vez mais de exp para o proximo
 	ficar mais forte com cada level
@@ -69,7 +69,7 @@ FASE DE TESTES
 -Barra de ferramentas (GUI) //28/06/2015
 	mostrando a vida // feito 15/06/2015
 	exp
-	status do player e suas duraçoes// feito 16/06/2015
+	status do player e suas duracoes// feito 16/06/2015
 	dano //feito 15/06/2015
 	speed //feito 15/06/2015
 	velAtk //feito 15/06/2015
@@ -79,7 +79,7 @@ FASE DE TESTES
 		com uma hotkey para cada um
 		uma imagem para descrever(arma para ranged e espada para melee)
 
--Raças para monstros
+-Racas para monstros
 
 -Particulas /feito 16/06/2015
 	criador de particulas com:
@@ -98,7 +98,7 @@ FASE DE TESTES
 -Druida//feito 02/07/2015
 	msm range do mago
 	heala inimigos q tenham tomado dano em uma range
-	animaçao de morte igual a grounded
+	animacao de morte igual a grounded
 	invoca dois ursos
 	
 	-Urso
@@ -111,11 +111,11 @@ FASE DE TESTES
 	
 	
 
--Criar area perto de player q nao nasça monstros pertos// feito 19/06/2015
+-Criar area perto de player q nao nasca monstros pertos// feito 19/06/2015
 
 
 
--Criar funçao q pinte os Mobs pelo tamanho de suas coordenadas Y//feito 25/06/2015
+-Criar funcao q pinte os Mobs pelo tamanho de suas coordenadas Y//feito 25/06/2015
 	organizar em ordem crescente o arraylist Mob.todosMobs e pintar na tela seguindo a ordem
 	
 -Criar possas de sangue //feito 26/06/2015
@@ -129,10 +129,10 @@ FASE DE TESTES
 		possas com x de alpha 
 
 -Implementar por completo senhora Orc //feito 23/06/2015
-	Animaçao parada//feito 21/06/2015
-	Animaçao andando
-	Animaçao tomarHit
-	Animaçao darHit
+	Animacao parada//feito 21/06/2015
+	Animacao andando
+	Animacao tomarHit
+	Animacao darHit
 	
 
 	
@@ -171,11 +171,11 @@ FASE DE TESTES
 -Misseis que se dividem no ar
 	em x distancia vs quando chega ao ponto do mouse em q foi criado	
 	se dividir mais de uma vez
-	animaçao na separaçao(particulas)
-	velocidades maiores a cada separaçao(simulando explosao)
+	animacao na separacao(particulas)
+	velocidades maiores a cada separacao(simulando explosao)
 
--Traps (posicionadas em tiles(facilita a detecção) vs posicionada livremente)
-	uso com possivel mana, facil implementação
+-Traps (posicionadas em tiles(facilita a deteccão) vs posicionada livremente)
+	uso com possivel mana, facil implementacão
 	tempo de recarga
 	pode causar status, com ou sem aprimoramentos
 	aprimoramento, usado por pontos ganhos ao passar de nivel
@@ -186,15 +186,15 @@ FASE DE TESTES
 	aprimoradas com pontos de level up, dinamica de destravar as skills focadas
 	
 	-Mana// feito 07/08/2015
-		regeneração passiva (e por skill?)
-		usada na utilizaçao de skills
+		regeneracão passiva (e por skill?)
+		usada na utilizacao de skills
 	
 	-Classes
 		skills unicas para cada classe
-		diferença na distribuiçao de atributos(vida, atk speed, velocidade, dano, mana)
+		diferenca na distribuicao de atributos(vida, atk speed, velocidade, dano, mana)
 		
-	-Skill com criaçao de tiles especiais
-		depois da destruiçao de um projetil
+	-Skill com criacao de tiles especiais
+		depois da destruicao de um projetil
 		
 		-Tiles Especiais
 			tipo tibia
@@ -213,7 +213,7 @@ FASE DE TESTES
 	pode ficar invisivel
 	
 	-Invisivel Status
-		player-nao chama a atençao de monstros, fica transparente
+		player-nao chama a atencao de monstros, fica transparente
 		monstro-nao pode ser visto pelo player, sai pequenas particulas(rajadas)
 
 
@@ -223,14 +223,14 @@ FASE DE TESTES
 		deixam status de fogo em area(dano por segundo igual veneno)
 			fogo se espalha quando toca em outros inimigos<------
 		
-			particulas de fumaça saindo
+			particulas de fumaca saindo
 			luz das chamas
 			chamas
 				luzes amarelas, laranjas e vermelhas com fagulhas saindo
-		animaçao de explosao
+		animacao de explosao
 		img diferente in game
 		
-	range como opçao de aprimoramento
+	range como opcao de aprimoramento
 		indicador de range atual vs range novo
 		
 
@@ -244,7 +244,7 @@ Chefoes
 
 -Menu Inicial
 	jogar
-	opçoes
+	opcoes
 	sobre
 	sair
 	
@@ -253,7 +253,7 @@ Chefoes
 	osso(dano, pouco def) ou buff diferentes(unicos)	
 	
 -Sistema de Listener
-	classe com funçoes para add ou remover funçoes de listener
+	classe com funcoes para add ou remover funcoes de listener
 	
 	
 	

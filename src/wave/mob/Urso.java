@@ -93,7 +93,7 @@ public class Urso extends Monstro{
 		int random = 1 + (int)(Math.random() * 1000);
 		if (random <= 2 && isFurioso  && ProjetilGround.todosGProjetils.size() < 2) {
 			new ProjetilGround(getXCentro(), getYSpriteCentro(), getDanoVar());
-			lançaProjetilSFX.play();
+			lancaProjetilSFX.play();
 		}
 	}
 	

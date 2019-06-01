@@ -21,7 +21,7 @@ public class CriadorDeParticulas extends Dimensional {
 	private double speedParVariacao;
 	private double anguloPar = 90;
 	private int porcentagem;
-	private int alphaDuraçao = 50;
+	private int alphaDuracao = 50;
 	private int anguloVariacao;
 	private int alphaVariacao;
 	private double rotacaoVel = 0;
@@ -44,13 +44,13 @@ public class CriadorDeParticulas extends Dimensional {
 	
 	//Luz
 	private int raio;
-	private double força;
+	private double forca;
 	private int fadeIn;
 	private int fadeOut;
 	private boolean varRaio;
-	private boolean varForça;
+	private boolean varForca;
 	private int oscRaio;
-	private int oscForça;
+	private int oscForca;
 	private boolean isLuzCustom = false;	
 	private boolean isLuz = false;
 	private boolean isBruta = false;
@@ -198,22 +198,22 @@ public class CriadorDeParticulas extends Dimensional {
 	
 	public void setComLuz(int raio, Color cor, double forca, int fadeIn, int fadeOut) {
 		this.raio = raio;
-		this.força = forca;
+		this.forca = forca;
 		this.fadeIn = fadeIn;
 		this.fadeOut = fadeOut;
 		isLuz = true;
 		if (cor != null) addColorLuz(cor);
 	}
 	
-	public void setComLuz(int raio, Color cor, double forca, int fadeIn, int fadeOut, boolean varRaio, boolean varForça, int oscRaio, int oscForça) {
+	public void setComLuz(int raio, Color cor, double forca, int fadeIn, int fadeOut, boolean varRaio, boolean varForca, int oscRaio, int oscForca) {
 		this.raio = raio;
-		this.força = forca;
+		this.forca = forca;
 		this.fadeIn = fadeIn;
 		this.fadeOut = fadeOut;
 		this.varRaio = varRaio;
-		this.varForça = varForça;
+		this.varForca = varForca;
 		this.oscRaio = oscRaio;
-		this.oscForça = oscForça;
+		this.oscForca = oscForca;
 		isLuz = true;
 		isLuzCustom = true;
 		if (cor != null) addColorLuz(cor);
@@ -290,27 +290,27 @@ public class CriadorDeParticulas extends Dimensional {
 		this.isContorno = isContorno;
 	}
 
-	public void setAlphaVar(int duraçao) {
-		this.alphaDuraçao = duraçao;
+	public void setAlphaVar(int duracao) {
+		this.alphaDuracao = duracao;
 	}
 
-	public void setAlphaVar(int duraçao, int variacao) {
-		this.alphaDuraçao = duraçao;
+	public void setAlphaVar(int duracao, int variacao) {
+		this.alphaDuracao = duracao;
 		this.alphaVariacao = variacao;
 		this.isAlphaVariado = true;
 	}
 
 	private float setAlpha() {
 		if (isAlphaVariado) {
-			int novaDuraçao = alphaDuraçao;
-			novaDuraçao += alphaVariacao - (int) (Math.random() * (alphaVariacao * 2));
-			if (novaDuraçao <= 0) {
-				novaDuraçao = 1;
+			int novaDuracao = alphaDuracao;
+			novaDuracao += alphaVariacao - (int) (Math.random() * (alphaVariacao * 2));
+			if (novaDuracao <= 0) {
+				novaDuracao = 1;
 			}
-			return 1.0f / novaDuraçao;
+			return 1.0f / novaDuracao;
 		}
 
-		return 1.0f / alphaDuraçao;
+		return 1.0f / alphaDuracao;
 	}
 
 	private void criarParticula() {
@@ -329,9 +329,9 @@ public class CriadorDeParticulas extends Dimensional {
 					Color corLuz = getCorLuz();
 					
 					if (isLuzCustom) {
-						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, força, fadeIn, fadeOut, varRaio, varForça, oscRaio, oscForça);
+						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, forca, fadeIn, fadeOut, varRaio, varForca, oscRaio, oscForca);
 					} else {
-						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, força, fadeIn, fadeOut);
+						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, forca, fadeIn, fadeOut);
 					}
 					
 					if (parAni != null) parAni.setAnimation(par);
@@ -353,9 +353,9 @@ public class CriadorDeParticulas extends Dimensional {
 					Color corLuz = getCorLuz();
 					
 					if (isLuzCustom) {
-						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, força, fadeIn, fadeOut, varRaio, varForça, oscRaio, oscForça);
+						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, forca, fadeIn, fadeOut, varRaio, varForca, oscRaio, oscForca);
 					} else {
-						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, força, fadeIn, fadeOut);
+						par.initLuz(raio, corLuz.getRed(), corLuz.getGreen(), corLuz.getBlue(), isBruta, forca, fadeIn, fadeOut);
 					}
 					
 					if (parAni != null) parAni.setAnimation(par);
@@ -426,7 +426,7 @@ public class CriadorDeParticulas extends Dimensional {
 		this.isProduzindo = isProduzindo;
 	}
 
-	public void setProduzindo(final boolean isProduzindo, final int duraçao) {
+	public void setProduzindo(final boolean isProduzindo, final int duracao) {
 		this.isProduzindo = isProduzindo;
 
 		if (timerDelay != null) {
@@ -438,7 +438,7 @@ public class CriadorDeParticulas extends Dimensional {
 		final int tickAtual = Principal.tickTotal;
 		timerDelay = new Timer(5, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Principal.tickTotal >= (tickAtual + duraçao)) {
+				if (Principal.tickTotal >= (tickAtual + duracao)) {
 					CriadorDeParticulas.this.isProduzindo = !isProduzindo;
 					timerDelay.stop();
 				}
@@ -448,7 +448,7 @@ public class CriadorDeParticulas extends Dimensional {
 
 	}
 
-	public void setProduzindoXYConstante(final boolean isProduzindo, final int duraçao) {
+	public void setProduzindoXYConstante(final boolean isProduzindo, final int duracao) {
 		this.isProduzindo = isProduzindo;
 
 		if (timerDelayStatico != null) {
@@ -467,7 +467,7 @@ public class CriadorDeParticulas extends Dimensional {
 					tickAnterior++;
 				}
 
-				if (Principal.tickTotal >= (tickAtual + duraçao)) {
+				if (Principal.tickTotal >= (tickAtual + duracao)) {
 					CriadorDeParticulas.this.isProduzindo = !isProduzindo;
 					timerDelayStatico.stop();
 				}

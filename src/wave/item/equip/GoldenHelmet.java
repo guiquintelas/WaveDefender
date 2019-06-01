@@ -16,7 +16,7 @@ public class GoldenHelmet extends Equip {
 	private CriadorDeParticulas particulasBrilho;
 
 	public GoldenHelmet(int x, int y) {
-		super(x, y, 18, 30, Equip.CABEÇA);
+		super(x, y, 18, 30, Equip.CABECA);
 		
 		randDano = Util.randomInt(1, 3);
 		randVida = Util.randomInt(3, 7) * 5;

@@ -125,7 +125,7 @@ public class BarraExp extends Descritivo {
 		}
 	}
 
-	public String getDescriçao() {
+	public String getDescricao() {
 		return descricao;
 	}
 }

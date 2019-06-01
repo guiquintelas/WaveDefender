@@ -5,15 +5,15 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.mob.Player;
 import wave.particula.CriadorDeParticulas;
 import wave.tools.Util;
 
 public class ProjetilVeneno extends ProjetilPerseguidorMob{
-	private Animaçao ani;
-	private static ArrayList<BufferedImage> img = Util.carregarArrayBI(Animaçao.explosaoSrite, 64, 576, 64, 64, 30);
+	private Animacao ani;
+	private static ArrayList<BufferedImage> img = Util.carregarArrayBI(Animacao.explosaoSrite, 64, 576, 64, 64, 30);
 	
 	private CriadorDeParticulas particulas;
 
@@ -27,7 +27,7 @@ public class ProjetilVeneno extends ProjetilPerseguidorMob{
 		particulas.setProduzindo(true);
 		particulas.setComLuz(7, new Color(0, 255, 0), 100, 5, 25);
 		
-		ani = new Animaçao(getXCentro(), getYCentro(), Animaçao.venenoGotaImgs, 4);
+		ani = new Animacao(getXCentro(), getYCentro(), Animacao.venenoGotaImgs, 4);
 		ani.setScale(Util.randomInt(15, 20)/10f);
 		ani.setLoop(true);
 		ani.setSeguindo(this);
@@ -48,7 +48,7 @@ public class ProjetilVeneno extends ProjetilPerseguidorMob{
 		Player.getPlayer().setLentoTrue(125, 40);
 		particulas.setProduzindo(false);
 		
-		new Animaçao(getXCentro(), getYCentro(), img, 2).start();
+		new Animacao(getXCentro(), getYCentro(), img, 2).start();
 	}
 
 	public void pintar(Graphics2D g) {

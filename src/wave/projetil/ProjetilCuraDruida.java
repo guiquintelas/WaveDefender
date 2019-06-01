@@ -3,7 +3,7 @@ package wave.projetil;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.mob.Druida;
 import wave.mob.Monstro;
@@ -41,7 +41,7 @@ public class ProjetilCuraDruida extends ProjetilPerseguidorMob{
 		if (monstro.isVivo()) {
 			monstro.curar(dano * 2);
 			
-			Animaçao ani = new Animaçao(0, 0, Animaçao.particulasHealImgs, 4);
+			Animacao ani = new Animacao(0, 0, Animacao.particulasHealImgs, 4);
 			ani.setScale(monstro.getWidth() / 90f);
 			
 			if (monstro instanceof Ogro) {
@@ -53,7 +53,7 @@ public class ProjetilCuraDruida extends ProjetilPerseguidorMob{
 			ani.start();
 			
 			final Luz luzCura = new Luz(monstro, 50, 0, 255, 0, 100, 15, true, true, 0, 0);
-			luzCura.forçaVar.addAcaoNaFila(new ActionQueue() {
+			luzCura.forcaVar.addAcaoNaFila(new ActionQueue() {
 				public boolean action() {
 					luzCura.desativar(25);
 					return true;
@@ -89,7 +89,7 @@ public class ProjetilCuraDruida extends ProjetilPerseguidorMob{
 		
 	}
 	
-	protected void checaAutoDestruiçao() {
+	protected void checaAutoDestruicao() {
 		return;
 	}
 

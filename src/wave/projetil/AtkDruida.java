@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import wave.audio.RandomSFXGrupo;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.mob.Druida;
 import wave.mob.Player;
 import wave.particula.CriadorDeParticulas;
 
 public class AtkDruida extends AutoAtkProjetil{
-	private Animaçao ani;
+	private Animacao ani;
 	
 	private static RandomSFXGrupo sfx = new RandomSFXGrupo(new String[]{"/SFX/druidaAtk1.ogg", "/SFX/druidaAtk2.ogg" ,"/SFX/druidaAtk3.ogg"});
 	
@@ -37,7 +37,7 @@ public class AtkDruida extends AutoAtkProjetil{
 			particulas.setSeguindo(true, this);
 		}
 		
-		ani = new Animaçao(getXCentro(), getYCentro(), Animaçao.druidaAtkImgs, 3);
+		ani = new Animacao(getXCentro(), getYCentro(), Animacao.druidaAtkImgs, 3);
 		ani.setLoop(true);
 		ani.setSeguindo(this);
 		ani.setAutoPaint(false);

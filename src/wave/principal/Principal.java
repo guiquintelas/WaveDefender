@@ -2,6 +2,7 @@ package wave.principal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
@@ -10,13 +11,13 @@ import javax.swing.UIManager;
 import wave.audio.BackMusic;
 import wave.audio.SoundEffect;
 import wave.graphics.BalaoDeFala;
-import wave.graphics.ExpValorGanhaAnimaçao;
+import wave.graphics.ExpValorGanhaAnimacao;
 import wave.graphics.Grafico;
-import wave.graphics.ModValorAnimaçao;
-import wave.graphics.NovoStatusAnimaçao;
+import wave.graphics.ModValorAnimacao;
+import wave.graphics.NovoStatusAnimacao;
 import wave.graphics.Sangue;
-import wave.graphics.animaçao.Animaçao;
-import wave.graphics.animaçao.AnimaçaoInterface;
+import wave.graphics.animacao.Animacao;
+import wave.graphics.animacao.AnimacaoInterface;
 import wave.graphics.light.Luz;
 import wave.graphics.light.LuzAmbiente;
 import wave.graphics.light.LuzBruta;
@@ -27,7 +28,7 @@ import wave.gui.menus.MenuOpcoes;
 import wave.input.ListenerManager;
 import wave.item.Chest;
 import wave.item.Item;
-import wave.item.PotionForça;
+import wave.item.PotionForca;
 import wave.item.PotionVida;
 import wave.map.MapGenerator;
 import wave.map.TileMap;
@@ -57,7 +58,7 @@ public class Principal implements Runnable {
 	public static boolean showFPS         = true;
 	public static boolean grafico  		  = false;
 	
-	private static boolean menuOpçoes = false;
+	private static boolean menuOpcoes = false;
 	public static boolean menuMochila = false;
 	public static boolean menuChar = false;
 	public static boolean menuLevel = false;
@@ -99,7 +100,7 @@ public class Principal implements Runnable {
 
 	public Principal() {
 		//BackMusic.setMute(true);
-		musicas = new BackMusic(new String[] { "/Music/jungle.ogg", "/Music/getLuckBack.ogg", "/Music/shop.ogg", "/Music/gimme.ogg", "/Music/leanOn.ogg", "/Music/radiaçao.ogg", "/Music/mega.ogg" });
+		musicas = new BackMusic(new String[] { "/Music/jungle.ogg", "/Music/getLuckBack.ogg", "/Music/shop.ogg", "/Music/gimme.ogg", "/Music/leanOn.ogg", "/Music/radiacao.ogg", "/Music/mega.ogg" });
 		//musicas = new BackMusic(new String[] { "/SFX/hit2.ogg", "/SFX/hit3.ogg", "/SFX/hit4.ogg" });
 
 		
@@ -269,7 +270,7 @@ public class Principal implements Runnable {
 		LuzAmbiente.init();		
 		novoNivel();
 		tela.init();
-		System.out.println("Tempo de Inicialização: " + (System.currentTimeMillis() - tempoA) + "ms");
+		System.out.println("Tempo de Inicializacão: " + (System.currentTimeMillis() - tempoA) + "ms");
 	}
 
 	public void novoJogo() {
@@ -277,16 +278,16 @@ public class Principal implements Runnable {
 		isNivelFinalizado = false;
 		MapGenerator.clearMap();
 		Item.todosItens.clear();
-		PotionForça.reset();
+		PotionForca.reset();
 		PotionVida.reset();
 		DimensionalObj.todosDimensionalObjs.clear();
 		Particula.todasParticulas.clear();
-		NovoStatusAnimaçao.todasStatusAni.clear();
-		AnimaçaoInterface.todasAni.clear();
+		NovoStatusAnimacao.todasStatusAni.clear();
+		AnimacaoInterface.todasAni.clear();
 		Mob.todosMobs.clear();
 		Monstro.todosMontros.clear();
 		Projetil.todosProjetils.clear();
-		ModValorAnimaçao.todosModAni.clear();
+		ModValorAnimacao.todosModAni.clear();
 		GUI.reset();
 		MenuMochila.reset();
 		tela.resetarImgPadrao();
@@ -338,7 +339,7 @@ public class Principal implements Runnable {
 			isNivelFinalizado = false;
 			Projetil.todosProjetils.clear();
 			Item.clear();
-			ModValorAnimaçao.todosModAni.clear();
+			ModValorAnimacao.todosModAni.clear();
 			if (nivel >1) Chest.clear();// para nao deletar o bau inicial
 			Chest.criarBau();
 			System.out.println("novo nivel iniciado");
@@ -388,14 +389,14 @@ public class Principal implements Runnable {
 	}
 
 	private void updateModAni() {
-		for (int x = 0; x < ModValorAnimaçao.todosModAni.size(); x++) {
-			ModValorAnimaçao.todosModAni.get(x).update();
+		for (int x = 0; x < ModValorAnimacao.todosModAni.size(); x++) {
+			ModValorAnimacao.todosModAni.get(x).update();
 		}
 	}
 
 	private void updateNovoSatusAni() {
-		for (int x = 0; x < NovoStatusAnimaçao.todasStatusAni.size(); x++) {
-			NovoStatusAnimaçao.todasStatusAni.get(x).update();
+		for (int x = 0; x < NovoStatusAnimacao.todasStatusAni.size(); x++) {
+			NovoStatusAnimacao.todasStatusAni.get(x).update();
 		}
 	}
 
@@ -406,8 +407,8 @@ public class Principal implements Runnable {
 	}
 
 	private void updateExpGanhaAni() {
-		for (int x = 0; x < ExpValorGanhaAnimaçao.todasExps.size(); x++) {
-			ExpValorGanhaAnimaçao.todasExps.get(x).update();
+		for (int x = 0; x < ExpValorGanhaAnimacao.todasExps.size(); x++) {
+			ExpValorGanhaAnimacao.todasExps.get(x).update();
 		}
 	}
 
@@ -418,8 +419,8 @@ public class Principal implements Runnable {
 //	}
 
 	private void updateAni() {
-		for (int x = 0; x < Animaçao.todasAni.size(); x++) {
-			AnimaçaoInterface.todasAni.get(x).update();
+		for (int x = 0; x < Animacao.todasAni.size(); x++) {
+			AnimacaoInterface.todasAni.get(x).update();
 		}
 	}
 	
@@ -468,13 +469,13 @@ public class Principal implements Runnable {
 		}
 	}
 	
-	public static boolean menuOpçoes() {
-		return menuOpçoes;
+	public static boolean menuOpcoes() {
+		return menuOpcoes;
 	}
 	
-	public static void setMenuOpçoes(boolean menu) {
+	public static void setMenuOpcoes(boolean menu) {
 		setPause(menu);
-		menuOpçoes = menu;	
+		menuOpcoes = menu;	
 		MenuOpcoes.update();
 		
 	}
@@ -501,8 +502,9 @@ public class Principal implements Runnable {
 			e.printStackTrace();
 		}
 
-		//System.setProperty("org.lwjgl.librarypath", "C:/Documents and Settings/ESCRITORIO/Meus documentos/Java Projetos/WaveDefender/native");
-		//System.setProperty("org.lwjgl.librarypath", "E:/Documents/Testes em Java/Master Engine/native");
+		String nativePath = FileSystems.getDefault().getPath("./native").normalize().toAbsolutePath().toString();
+
+		System.setProperty("org.lwjgl.librarypath", nativePath);
 
 		@SuppressWarnings("unused")
 		Principal main = new Principal();

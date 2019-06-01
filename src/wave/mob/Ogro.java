@@ -11,10 +11,10 @@ import javax.swing.Timer;
 
 import wave.audio.RandomSFXGrupo;
 import wave.graphics.BalaoDeFala;
-import wave.graphics.NovoStatusAnimaçao;
-import wave.graphics.animaçao.AnimaçaoListener;
-import wave.graphics.animaçao.AnimaçaoSprite;
-import wave.graphics.animaçao.AnimaçaoSpriteGrupo;
+import wave.graphics.NovoStatusAnimacao;
+import wave.graphics.animacao.AnimacaoListener;
+import wave.graphics.animacao.AnimacaoSprite;
+import wave.graphics.animacao.AnimacaoSpriteGrupo;
 import wave.item.Dropper;
 import wave.particula.CriadorDeParticulas;
 import wave.principal.Principal;
@@ -22,7 +22,7 @@ import wave.projetil.ProjetilGround;
 import wave.tools.Util;
 
 public class Ogro extends Monstro {
-	private static final int DELAY_REGENERAÇAO = 150;
+	private static final int DELAY_REGENERAcAO = 150;
 	private static final int DELAY_TOMAR_HIT_ANI = 10;
 	private static final int DELAY_ATACAR_ANI = 16;
 	private static final int WIDTH_SPRITE = 55;
@@ -33,7 +33,7 @@ public class Ogro extends Monstro {
 	private static boolean primeiroOgro = true;
 
 	private static final BufferedImage bitmap = Util.carregarImg("/Sprites/ogroBitmap.png");
-	private final AnimaçaoSpriteGrupo grupoAni = new AnimaçaoSpriteGrupo();
+	private final AnimacaoSpriteGrupo grupoAni = new AnimacaoSpriteGrupo();
 	private static final ArrayList<BufferedImage> spritesParado = new ArrayList<BufferedImage>();
 	private static final ArrayList<BufferedImage> spritesAndando = new ArrayList<BufferedImage>();
 	private static final ArrayList<BufferedImage> spritesTomarHit = new ArrayList<BufferedImage>();
@@ -42,40 +42,40 @@ public class Ogro extends Monstro {
 	private static final ArrayList<BufferedImage> spritesParadoFD = Util.carregarArrayBI(bitmap, 0, 90, 55, 90, 6);
 	private static final ArrayList<BufferedImage> spritesParadoTD = Util.carregarArrayBI(bitmap, 0, 180, 55, 90, 6);
 	private static final ArrayList<BufferedImage> spritesParadoTE = Util.carregarArrayBI(bitmap, 0, 270, 55, 90, 6);
-	private final AnimaçaoSprite paradoFE = new AnimaçaoSprite(spritesParadoFE, 9, grupoAni);
-	private final AnimaçaoSprite paradoFD = new AnimaçaoSprite(spritesParadoFD, 9, grupoAni);
-	private final AnimaçaoSprite paradoTE = new AnimaçaoSprite(spritesParadoTE, 9, grupoAni);
-	private final AnimaçaoSprite paradoTD = new AnimaçaoSprite(spritesParadoTD, 9, grupoAni);
+	private final AnimacaoSprite paradoFE = new AnimacaoSprite(spritesParadoFE, 9, grupoAni);
+	private final AnimacaoSprite paradoFD = new AnimacaoSprite(spritesParadoFD, 9, grupoAni);
+	private final AnimacaoSprite paradoTE = new AnimacaoSprite(spritesParadoTE, 9, grupoAni);
+	private final AnimacaoSprite paradoTD = new AnimacaoSprite(spritesParadoTD, 9, grupoAni);
 
 	private static final ArrayList<BufferedImage> spritesAndandoFE = Util.carregarArrayBI(bitmap, 0, 360, 60, 90, 6);
 	private static final ArrayList<BufferedImage> spritesAndandoFD = Util.carregarArrayBI(bitmap, 0, 450, 60, 90, 6);
 	private static final ArrayList<BufferedImage> spritesAndandoTD = Util.carregarArrayBI(bitmap, 0, 540, 60, 90, 6);
 	private static final ArrayList<BufferedImage> spritesAndandoTE = Util.carregarArrayBI(bitmap, 0, 630, 60, 90, 6);
-	private final AnimaçaoSprite andandoFE = new AnimaçaoSprite(spritesAndandoFE, 8, grupoAni);
-	private final AnimaçaoSprite andandoFD = new AnimaçaoSprite(spritesAndandoFD, 8, grupoAni);
-	private final AnimaçaoSprite andandoTE = new AnimaçaoSprite(spritesAndandoTE, 8, grupoAni);
-	private final AnimaçaoSprite andandoTD = new AnimaçaoSprite(spritesAndandoTD, 8, grupoAni);
+	private final AnimacaoSprite andandoFE = new AnimacaoSprite(spritesAndandoFE, 8, grupoAni);
+	private final AnimacaoSprite andandoFD = new AnimacaoSprite(spritesAndandoFD, 8, grupoAni);
+	private final AnimacaoSprite andandoTE = new AnimacaoSprite(spritesAndandoTE, 8, grupoAni);
+	private final AnimacaoSprite andandoTD = new AnimacaoSprite(spritesAndandoTD, 8, grupoAni);
 
 	private static final ArrayList<BufferedImage> spritesAtkFE = Util.carregarArrayBI(bitmap, 0, 720, 67, 90, 4);
 	private static final ArrayList<BufferedImage> spritesAtkFD = Util.carregarArrayBI(bitmap, 0, 810, 67, 90, 4);
 	private static final ArrayList<BufferedImage> spritesAtkTE = Util.carregarArrayBI(bitmap, 0, 900, 55, 90, 4);
 	private static final ArrayList<BufferedImage> spritesAtkTD = Util.carregarArrayBI(bitmap, 0, 990, 55, 90, 4);
-	private final AnimaçaoSprite atkFE = new AnimaçaoSprite(spritesAtkFE, 5, grupoAni);
-	private final AnimaçaoSprite atkFD = new AnimaçaoSprite(spritesAtkFD, 5, grupoAni);
-	private final AnimaçaoSprite atkTE = new AnimaçaoSprite(spritesAtkTE, 5, grupoAni);
-	private final AnimaçaoSprite atkTD = new AnimaçaoSprite(spritesAtkTD, 5, grupoAni);
+	private final AnimacaoSprite atkFE = new AnimacaoSprite(spritesAtkFE, 5, grupoAni);
+	private final AnimacaoSprite atkFD = new AnimacaoSprite(spritesAtkFD, 5, grupoAni);
+	private final AnimacaoSprite atkTE = new AnimacaoSprite(spritesAtkTE, 5, grupoAni);
+	private final AnimacaoSprite atkTD = new AnimacaoSprite(spritesAtkTD, 5, grupoAni);
 
 	private static final ArrayList<BufferedImage> spritesTomandoHitFE = Util.carregarArrayBI(bitmap, 63, 1080, 63, 90, 1);
 	private static final ArrayList<BufferedImage> spritesTomandoHitFD = Util.carregarArrayBI(bitmap, 189, 1080, 63, 90, 1);
 	private static final ArrayList<BufferedImage> spritesTomandoHitTE = Util.carregarArrayBI(bitmap, 63, 1170, 63, 90, 1);
 	private static final ArrayList<BufferedImage> spritesTomandoHitTD = Util.carregarArrayBI(bitmap, 189, 1170, 63, 90, 1);
-	private final AnimaçaoSprite tomarHitFE = new AnimaçaoSprite(spritesTomandoHitFE, 10, grupoAni);
-	private final AnimaçaoSprite tomarHitFD = new AnimaçaoSprite(spritesTomandoHitFD, 10, grupoAni);
-	private final AnimaçaoSprite tomarHitTE = new AnimaçaoSprite(spritesTomandoHitTE, 10, grupoAni);
-	private final AnimaçaoSprite tomarHitTD = new AnimaçaoSprite(spritesTomandoHitTD, 10, grupoAni);
+	private final AnimacaoSprite tomarHitFE = new AnimacaoSprite(spritesTomandoHitFE, 10, grupoAni);
+	private final AnimacaoSprite tomarHitFD = new AnimacaoSprite(spritesTomandoHitFD, 10, grupoAni);
+	private final AnimacaoSprite tomarHitTE = new AnimacaoSprite(spritesTomandoHitTE, 10, grupoAni);
+	private final AnimacaoSprite tomarHitTD = new AnimacaoSprite(spritesTomandoHitTD, 10, grupoAni);
 
 
-	private Timer timerRegeneraçao;
+	private Timer timerRegeneracao;
 	private Timer timerTomandoHit;
 	private Timer timerAtkando;
 
@@ -111,7 +111,7 @@ public class Ogro extends Monstro {
 		atkTD.setOffYBruto(5);
 		atkTE.setOffYBruto(5);
 		
-		AnimaçaoListener atk = new AnimaçaoListener() {
+		AnimacaoListener atk = new AnimacaoListener() {
 			public void metodo() {
 				Player.getPlayer().tomarKnockBack(Ogro.this.angulo);
 				Player.getPlayer().tomarHit(getDanoVar());
@@ -167,7 +167,7 @@ public class Ogro extends Monstro {
 		int random = 1 + (int)(Math.random() * 1000);
 		if (random <= 2 && isFurioso && ProjetilGround.todosGProjetils.size() < 2) {
 			new ProjetilGround(getXCentro(), getYSpriteCentro(), getDanoVar());
-			lançaProjetilSFX.play();
+			lancaProjetilSFX.play();
 		}
 	}
 
@@ -349,14 +349,14 @@ public class Ogro extends Monstro {
 
 	private void regen() {
 		if (getVida() != getVidaMax()) {
-			if (timerRegeneraçao != null) {
-				if (timerRegeneraçao.isRunning()) {
+			if (timerRegeneracao != null) {
+				if (timerRegeneracao.isRunning()) {
 					return;
 				}
 			}
 
-			timerRegeneraçao = new Timer(5, new ActionListener() {
-				int proximoTick = Principal.tickTotal + DELAY_REGENERAÇAO;
+			timerRegeneracao = new Timer(5, new ActionListener() {
+				int proximoTick = Principal.tickTotal + DELAY_REGENERAcAO;
 
 				public void actionPerformed(ActionEvent e) {
 					if (Principal.tickTotal >= proximoTick) {
@@ -373,23 +373,23 @@ public class Ogro extends Monstro {
 							particulaRegen.setProduzindo(true, 15);
 						}
 
-						proximoTick += DELAY_REGENERAÇAO;
+						proximoTick += DELAY_REGENERAcAO;
 					}
 
 					if (!isVivo()) {
-						timerRegeneraçao.stop();
+						timerRegeneracao.stop();
 					}
 
 				}
 			});
-			timerRegeneraçao.start();
+			timerRegeneracao.start();
 
 		}
 	}
 
 	protected boolean checaVivo() {
 		if (!super.checaVivo()) {
-			new NovoStatusAnimaçao(getX(), getY(), "GROARRR!");
+			new NovoStatusAnimacao(getX(), getY(), "GROARRR!");
 			roar.play();
 			
 
@@ -399,7 +399,7 @@ public class Ogro extends Monstro {
 					if (!Monstro.todosMontros.get(x).isFurioso) {
 						Monstro.todosMontros.get(x).setFurioso(true);
 						Monstro.todosMontros.get(x).setSpeed(Monstro.todosMontros.get(x).speed + 0.8);
-						new NovoStatusAnimaçao(Monstro.todosMontros.get(x).getX(), Monstro.todosMontros.get(x).getY(), "GROARRR!");
+						new NovoStatusAnimacao(Monstro.todosMontros.get(x).getX(), Monstro.todosMontros.get(x).getY(), "GROARRR!");
 						break;
 					}
 				}
@@ -413,7 +413,7 @@ public class Ogro extends Monstro {
 	protected void droppar() {
 		dropper.setCap(1);
 		dropper.addItem("MochilaAdv", 15, null);
-		dropper.addItem("Potion de Força", 10, null);
+		dropper.addItem("Potion de Forca", 10, null);
 		dropper.addItem(Dropper.MOCHILA_CHIQUE, 3);
 		dropper.addItem(Dropper.MEDIEVAL_ARMOR, 5);
 		dropper.addItem(Dropper.MEDIEVAL_HELMET, 5);

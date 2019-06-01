@@ -20,20 +20,20 @@ public abstract class StatusGUI extends Descritivo{
 	public static final int WIDTH = 40;
 	public static final int HEIGHT = 40;
 	
-	private boolean semDuraçao = false;
+	private boolean semDuracao = false;
 	
 	private float alpha = 1.0f;
 	private String id;
 	
-	private BarraDuraçaoStatus barraDuraçao;
+	private BarraDuracaoStatus barraDuracao;
 	private BufferedImage img = carregarImg();
 	
-	private Timer timerCriaçao;
+	private Timer timerCriacao;
 	
 	public static ArrayList<StatusGUI> todosStatusGUI = new ArrayList<StatusGUI>();
 	
-	public StatusGUI(int duraçao, String id) {
-		barraDuraçao = new BarraDuraçaoStatus(duraçao, this);
+	public StatusGUI(int duracao, String id) {
+		barraDuracao = new BarraDuracaoStatus(duracao, this);
 		this.id = id;
 		addArray(id);
 		
@@ -42,8 +42,8 @@ public abstract class StatusGUI extends Descritivo{
 	}
 	
 	public StatusGUI(String id) {
-		this.semDuraçao = true;
-		barraDuraçao = new BarraDuraçaoStatus(0 , this);
+		this.semDuracao = true;
+		barraDuracao = new BarraDuracaoStatus(0 , this);
 		this.id = id;
 		addArray(id);
 		
@@ -61,7 +61,7 @@ public abstract class StatusGUI extends Descritivo{
 		}
 		
 		todosStatusGUI.add(this);
-		criaçaoAni();
+		criacaoAni();
 	}
 	
 	protected abstract BufferedImage carregarImg();
@@ -92,11 +92,11 @@ public abstract class StatusGUI extends Descritivo{
 		return HEIGHT;
 	}
 	
-	public abstract String getDescriçao();
+	public abstract String getDescricao();
 
 	public void update() {
 		updateX();
-		barraDuraçao.update();
+		barraDuracao.update();
 	}
 
 	private void updateX() {
@@ -104,10 +104,10 @@ public abstract class StatusGUI extends Descritivo{
 		x = 355 + (index * 50);	
 	}
 	
-	private void criaçaoAni() {
+	private void criacaoAni() {
 		alpha = 0;
 		
-		timerCriaçao = new Timer(5, new ActionListener() {
+		timerCriacao = new Timer(5, new ActionListener() {
 			int tickAtual = Principal.tickTotal;
 			public void actionPerformed(ActionEvent e) {
 				if (Principal.tickTotal >= tickAtual) {
@@ -115,13 +115,13 @@ public abstract class StatusGUI extends Descritivo{
 					tickAtual++;
 					if (alpha >= 1) {
 						alpha = 1;
-						timerCriaçao.stop();
+						timerCriacao.stop();
 					}
 				}
 			}
 			
 		});
-		timerCriaçao.start();
+		timerCriacao.start();
 	}
 	
 	public void pintar(Graphics2D g) {
@@ -131,17 +131,17 @@ public abstract class StatusGUI extends Descritivo{
 		} else {
 			g.fillRect(getX(), y, WIDTH, HEIGHT);
 		}
-		barraDuraçao.pintar(g);
+		barraDuracao.pintar(g);
 		g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
 	}
 
-	public boolean isSemDuraçao() {
-		return semDuraçao;
+	public boolean isSemDuracao() {
+		return semDuracao;
 	}
 
-	public void setSemDuraçao(boolean semDuraçao) {
-		this.semDuraçao = semDuraçao;
-		if (semDuraçao = false) {
+	public void setSemDuracao(boolean semDuracao) {
+		this.semDuracao = semDuracao;
+		if (semDuracao = false) {
 			remove();
 		}
 	}

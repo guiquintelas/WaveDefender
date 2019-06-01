@@ -13,7 +13,7 @@ public abstract class Equip extends Item{
 		this.ID = ID;
 	}
 	public static BufferedImage armorSheet = Util.carregarImg("/Sprites/armor2.png");
-	public static final String CABEÇA = "cabeça";
+	public static final String CABECA = "cabeca";
 	public static final String PEITO = "peito";
 	public static final String PERNA = "perna";
 	public static final String PE = "pe";

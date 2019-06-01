@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import wave.audio.RandomSFXGrupo;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.map.Tile;
 import wave.mob.Mob;
 import wave.particula.CriadorDeParticulas;
@@ -28,9 +28,9 @@ public abstract class Trap extends DimensionalObj{
 		this.y = tile.getY();
 		this.width = Tile.WIDTH;
 		this.height = Tile.HEIGHT;
-		particulasCriacao = new CriadorDeParticulas(tile.getX(), tile.getY(), Tile.WIDTH, Tile.HEIGHT, Animaçao.peca1, 1.5f, 5, 100);
-		particulasCriacao.addImgs(Animaçao.peca3);
-		particulasCriacao.addImgs(Animaçao.peca4);
+		particulasCriacao = new CriadorDeParticulas(tile.getX(), tile.getY(), Tile.WIDTH, Tile.HEIGHT, Animacao.peca1, 1.5f, 5, 100);
+		particulasCriacao.addImgs(Animacao.peca3);
+		particulasCriacao.addImgs(Animacao.peca4);
 		particulasCriacao.setRotacaoVelVar(4, 1.5);
 		particulasCriacao.setAlphaVar(20, 10);
 		particulasCriacao.setAngulo(90, 45);

@@ -10,7 +10,7 @@ import wave.principal.Dimensional;
 import wave.principal.JanelaJogo;
 
 public class BarraDeVida extends Dimensional {
-	private static final int ESPAÇO = 2;
+	private static final int ESPAcO = 2;
 	private Mob mob;
 	private Color cor;
 	private int ajuste = 0;
@@ -43,7 +43,7 @@ public class BarraDeVida extends Dimensional {
 
 	private void updateXY() {
 		x = mob.getX() - 5;
-		y = mob.getYSprite() - (ESPAÇO + height) - ajuste;
+		y = mob.getYSprite() - (ESPAcO + height) - ajuste;
 	}
 
 	private void updateCor() {

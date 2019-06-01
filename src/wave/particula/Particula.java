@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import wave.graphics.Grafico;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.graphics.light.LuzBruta;
 import wave.mob.Mob;
@@ -45,7 +45,7 @@ public class Particula extends Dimensional {
 	private boolean isInvisivel = false;
 
 	private CriadorDeParticulas cdp;
-	private Animaçao ani;
+	private Animacao ani;
 
 	public Luz luz;
 	private int fadeOut;
@@ -132,7 +132,7 @@ public class Particula extends Dimensional {
 		}
 
 		todasParticulas.add(this);
-		ani = new Animaçao(x, y, imgs, tickPorIndex);
+		ani = new Animacao(x, y, imgs, tickPorIndex);
 		ani.setScale(scale);
 		ani.setSeguindo(this);
 		if (imgs.size() == 1)
@@ -155,13 +155,13 @@ public class Particula extends Dimensional {
 		this.fadeOut = fadeOut;
 	}
 	
-	public void initLuz(int raio, int r, int g, int b, boolean isBruta, double forca, int fadeIn, int fadeOut, boolean varRaio, boolean varForça, int oscRaio, int oscForça) {
+	public void initLuz(int raio, int r, int g, int b, boolean isBruta, double forca, int fadeIn, int fadeOut, boolean varRaio, boolean varForca, int oscRaio, int oscForca) {
 		if (luz != null) return;
 		
 		if (isBruta) {
-			luz = new LuzBruta(this, raio, r, g, b, forca, fadeIn, varRaio, varForça, oscRaio, oscForça);
+			luz = new LuzBruta(this, raio, r, g, b, forca, fadeIn, varRaio, varForca, oscRaio, oscForca);
 		} else {
-			luz = new Luz(this, raio, r, g, b, forca, fadeIn, varRaio, varForça, oscRaio, oscForça);
+			luz = new Luz(this, raio, r, g, b, forca, fadeIn, varRaio, varForca, oscRaio, oscForca);
 		}
 		
 		this.fadeOut = fadeOut;

@@ -16,12 +16,12 @@ import wave.audio.BackMusic;
 import wave.audio.RandomSFXGrupo;
 import wave.audio.SoundEffect;
 import wave.graphics.BalaoDeFala;
-import wave.graphics.ExpValorGanhaAnimaçao;
+import wave.graphics.ExpValorGanhaAnimacao;
 import wave.graphics.Grafico;
-import wave.graphics.NovoStatusAnimaçao;
+import wave.graphics.NovoStatusAnimacao;
 import wave.graphics.Sombra;
-import wave.graphics.animaçao.AnimaçaoSprite;
-import wave.graphics.animaçao.AnimaçaoSpriteGrupo;
+import wave.graphics.animacao.AnimacaoSprite;
+import wave.graphics.animacao.AnimacaoSpriteGrupo;
 import wave.graphics.light.Luz;
 import wave.gui.BarraExp;
 import wave.gui.GUI;
@@ -130,29 +130,29 @@ public final class Player extends Mob implements Ranged {
 	//Criadores de Particulas
 	private CriadorDeParticulas particulaCuraPassiva;
 	private CriadorDeParticulas particulaLevelUp;
-	private CriadorDeParticulas brilhoCabeça;
+	private CriadorDeParticulas brilhoCabeca;
 	private CriadorDeParticulas brilhoPeito;
 	private CriadorDeParticulas brilhoPerna;
 	private CriadorDeParticulas brilhoPe;
 
 	//Sprite
 	private static final BufferedImage sprites = Util.carregarImg("/Sprites/playerBitmap.png");
-	private static final AnimaçaoSpriteGrupo grupoAni = new AnimaçaoSpriteGrupo();
-	private static final AnimaçaoSprite parado = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 0, 30, 55, 11), 15, grupoAni);
-	private static final AnimaçaoSprite esquerda = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 30, 55, 30, 55, 10), 4, grupoAni);
-	private static final AnimaçaoSprite esquerdaCima = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 30, 110, 30, 55, 10), 4, grupoAni);
-	private static final AnimaçaoSprite cima = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 165, 30, 55, 4), 15, grupoAni);
-	private static final AnimaçaoSprite cimaDireita = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 220, 30, 55, 4), 15, grupoAni);
-	private static final AnimaçaoSprite direita = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 275, 30, 55, 4), 15, grupoAni);
-	private static final AnimaçaoSprite direitaBaixo = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 330, 30, 55, 4), 15, grupoAni);
-	private static final AnimaçaoSprite baixo = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 385, 30, 55, 4), 15, grupoAni);
-	private static final AnimaçaoSprite baixoEsquerda = new AnimaçaoSprite(Util.carregarArrayBI(sprites, 0, 440, 30, 55, 4), 15, grupoAni);
+	private static final AnimacaoSpriteGrupo grupoAni = new AnimacaoSpriteGrupo();
+	private static final AnimacaoSprite parado = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 0, 30, 55, 11), 15, grupoAni);
+	private static final AnimacaoSprite esquerda = new AnimacaoSprite(Util.carregarArrayBI(sprites, 30, 55, 30, 55, 10), 4, grupoAni);
+	private static final AnimacaoSprite esquerdaCima = new AnimacaoSprite(Util.carregarArrayBI(sprites, 30, 110, 30, 55, 10), 4, grupoAni);
+	private static final AnimacaoSprite cima = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 165, 30, 55, 4), 15, grupoAni);
+	private static final AnimacaoSprite cimaDireita = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 220, 30, 55, 4), 15, grupoAni);
+	private static final AnimacaoSprite direita = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 275, 30, 55, 4), 15, grupoAni);
+	private static final AnimacaoSprite direitaBaixo = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 330, 30, 55, 4), 15, grupoAni);
+	private static final AnimacaoSprite baixo = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 385, 30, 55, 4), 15, grupoAni);
+	private static final AnimacaoSprite baixoEsquerda = new AnimacaoSprite(Util.carregarArrayBI(sprites, 0, 440, 30, 55, 4), 15, grupoAni);
 
 	//SFX
 	private static final RandomSFXGrupo tomarHitSFX = new RandomSFXGrupo(new String[] { "/SFX/playerHit1.ogg", "/SFX/playerHit2.ogg", "/SFX/playerHit3.ogg", "/SFX/playerHit4.ogg" });
 	private static final SoundEffect levelUpSFX = new SoundEffect("/SFX/levelUpSfx.ogg");
 	public static final SoundEffect semMana = new SoundEffect("/SFX/noMana.ogg");
-	public static final SoundEffect coraçao = new SoundEffect("/SFX/coraçao.ogg");
+	public static final SoundEffect coracao = new SoundEffect("/SFX/coracao.ogg");
 	private static final RandomSFXGrupo pegarItemSFX = new RandomSFXGrupo(new String[] { "/SFX/item1.ogg", "/SFX/item1.ogg", "/SFX/item2.ogg", "/SFX/item3.ogg", "/SFX/item4.ogg", "/SFX/item5.ogg", "/SFX/item6.ogg" });
 	private static final SoundEffect pegarMochilaSFX = new SoundEffect("/SFX/mochila.ogg");
 	private static final RandomSFXGrupo equipSFX = new RandomSFXGrupo(new String[] { "/SFX/equip1.ogg", "/SFX/equip2.ogg", "/SFX/equip3.ogg", "/SFX/equip4.ogg", "/SFX/equip5.ogg" });
@@ -166,7 +166,7 @@ public final class Player extends Mob implements Ranged {
 	public Player(int x, int y) {
 		super(WIDTH_HITBOX, HEIGHT_HITBOX, HEIGHT_SPRITE, 100, 10, 0, 3, 1);
 
-		if (getPlayer != null && getPlayer.exp > 0) new BalaoDeFala("Esse estranho baú deve conter lembranças da minha vida passada...", this, 250);
+		if (getPlayer != null && getPlayer.exp > 0) new BalaoDeFala("Esse estranho baú deve conter lembrancas da minha vida passada...", this, 250);
 
 		getPlayer = this;
 		this.x = x;
@@ -189,11 +189,11 @@ public final class Player extends Mob implements Ranged {
 		particulaLevelUp.setAngulo(90, 30);
 		particulaLevelUp.setContorno(true);
 
-		brilhoCabeça = CDPProntos.brilho(this, getX(), getYSprite(), width, 18);
+		brilhoCabeca = CDPProntos.brilho(this, getX(), getYSprite(), width, 18);
 		brilhoPeito = CDPProntos.brilho(this, getX() + 2, getYSprite() + 20, width - 2, 14);
 		brilhoPerna = CDPProntos.brilho(this, getX() + 5, getYSprite() + 20 + 14, width - 5, 17);
 		brilhoPe = CDPProntos.brilho(this, getX(), getYSprite() + heightSprite - 3, width, 3);
-		brilhoCabeça.setProduzindo(false);
+		brilhoCabeca.setProduzindo(false);
 		brilhoPeito.setProduzindo(false);
 		brilhoPerna.setProduzindo(false);
 		brilhoPe.setProduzindo(false);
@@ -286,7 +286,7 @@ public final class Player extends Mob implements Ranged {
 		particulaCuraPassiva.update(getX(), getYSprite());
 		particulaLevelUp.update(getX(), getYSprite() - 10);
 
-		brilhoCabeça.update(getX(), getYSprite());
+		brilhoCabeca.update(getX(), getYSprite());
 		brilhoPeito.update(getX() + 2, getYSprite() + 20);
 		brilhoPerna.update(getX() + 5, getYSprite() + 20 + 14);
 		brilhoPe.update(getX(), getYSprite() + heightSprite - 3);
@@ -329,7 +329,7 @@ public final class Player extends Mob implements Ranged {
 
 	public int getDano() {
 		int danoBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) danoBonus += equips.get(Equip.CABEÇA).getDano();
+		if (equips.get(Equip.CABECA) != null) danoBonus += equips.get(Equip.CABECA).getDano();
 		if (equips.get(Equip.PEITO) != null) danoBonus += equips.get(Equip.PEITO).getDano();
 		if (equips.get(Equip.PERNA) != null) danoBonus += equips.get(Equip.PERNA).getDano();
 		if (equips.get(Equip.PE) != null) danoBonus += equips.get(Equip.PE).getDano();
@@ -338,7 +338,7 @@ public final class Player extends Mob implements Ranged {
 
 	public int getVidaMax() {
 		int vidaBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) vidaBonus += equips.get(Equip.CABEÇA).getVida();
+		if (equips.get(Equip.CABECA) != null) vidaBonus += equips.get(Equip.CABECA).getVida();
 		if (equips.get(Equip.PEITO) != null) vidaBonus += equips.get(Equip.PEITO).getVida();
 		if (equips.get(Equip.PERNA) != null) vidaBonus += equips.get(Equip.PERNA).getVida();
 		if (equips.get(Equip.PE) != null) vidaBonus += equips.get(Equip.PE).getVida();
@@ -347,7 +347,7 @@ public final class Player extends Mob implements Ranged {
 
 	public int getDefesa() {
 		int defesaBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) defesaBonus += equips.get(Equip.CABEÇA).getDefesa();
+		if (equips.get(Equip.CABECA) != null) defesaBonus += equips.get(Equip.CABECA).getDefesa();
 		if (equips.get(Equip.PEITO) != null) defesaBonus += equips.get(Equip.PEITO).getDefesa();
 		if (equips.get(Equip.PERNA) != null) defesaBonus += equips.get(Equip.PERNA).getDefesa();
 		if (equips.get(Equip.PE) != null) defesaBonus += equips.get(Equip.PE).getDefesa();
@@ -356,7 +356,7 @@ public final class Player extends Mob implements Ranged {
 
 	public float getMana() {
 		int manaBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) manaBonus += equips.get(Equip.CABEÇA).getMana();
+		if (equips.get(Equip.CABECA) != null) manaBonus += equips.get(Equip.CABECA).getMana();
 		if (equips.get(Equip.PEITO) != null) manaBonus += equips.get(Equip.PEITO).getMana();
 		if (equips.get(Equip.PERNA) != null) manaBonus += equips.get(Equip.PERNA).getMana();
 		if (equips.get(Equip.PE) != null) manaBonus += equips.get(Equip.PE).getMana();
@@ -365,7 +365,7 @@ public final class Player extends Mob implements Ranged {
 
 	public float getManaRegen() {
 		float manaBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) manaBonus += equips.get(Equip.CABEÇA).getManaRegen();
+		if (equips.get(Equip.CABECA) != null) manaBonus += equips.get(Equip.CABECA).getManaRegen();
 		if (equips.get(Equip.PEITO) != null) manaBonus += equips.get(Equip.PEITO).getManaRegen();
 		if (equips.get(Equip.PERNA) != null) manaBonus += equips.get(Equip.PERNA).getManaRegen();
 		if (equips.get(Equip.PE) != null) manaBonus += equips.get(Equip.PE).getManaRegen();
@@ -374,7 +374,7 @@ public final class Player extends Mob implements Ranged {
 
 	public double getSpeed() {
 		float speedBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) speedBonus += equips.get(Equip.CABEÇA).getSpeed();
+		if (equips.get(Equip.CABECA) != null) speedBonus += equips.get(Equip.CABECA).getSpeed();
 		if (equips.get(Equip.PEITO) != null) speedBonus += equips.get(Equip.PEITO).getSpeed();
 		if (equips.get(Equip.PERNA) != null) speedBonus += equips.get(Equip.PERNA).getSpeed();
 		if (equips.get(Equip.PE) != null) speedBonus += equips.get(Equip.PE).getSpeed();
@@ -383,7 +383,7 @@ public final class Player extends Mob implements Ranged {
 
 	public double getVelAtk() {
 		float velAtkBonus = 0;
-		if (equips.get(Equip.CABEÇA) != null) velAtkBonus += equips.get(Equip.CABEÇA).getVelAtk();
+		if (equips.get(Equip.CABECA) != null) velAtkBonus += equips.get(Equip.CABECA).getVelAtk();
 		if (equips.get(Equip.PEITO) != null) velAtkBonus += equips.get(Equip.PEITO).getVelAtk();
 		if (equips.get(Equip.PERNA) != null) velAtkBonus += equips.get(Equip.PERNA).getVelAtk();
 		if (equips.get(Equip.PE) != null) velAtkBonus += equips.get(Equip.PE).getVelAtk();
@@ -418,7 +418,7 @@ public final class Player extends Mob implements Ranged {
 			equipSFX.play();
 
 			if (equip.toString() == Dropper.GOLD_ARMOR)  brilhoPeito.setProduzindo(true);
-			if (equip.toString() == Dropper.GOLD_HELMET) brilhoCabeça.setProduzindo(true);
+			if (equip.toString() == Dropper.GOLD_HELMET) brilhoCabeca.setProduzindo(true);
 			if (equip.toString() == Dropper.GOLD_LEGS)   brilhoPerna.setProduzindo(true);
 			if (equip.toString() == Dropper.GOLD_BOOTS)  brilhoPe.setProduzindo(true);
 
@@ -430,7 +430,7 @@ public final class Player extends Mob implements Ranged {
 	public void desequipar(String id) {
 
 		if (equips.get(id).toString()  == Dropper.GOLD_ARMOR)  brilhoPeito.setProduzindo(false);
-		if (equips.get(id).toString()  == Dropper.GOLD_HELMET) brilhoCabeça.setProduzindo(false);
+		if (equips.get(id).toString()  == Dropper.GOLD_HELMET) brilhoCabeca.setProduzindo(false);
 		if (equips.get(id).toString()  == Dropper.GOLD_LEGS)   brilhoPerna.setProduzindo(false);
 		if (equips.get(id).toString()  == Dropper.GOLD_BOOTS)  brilhoPe.setProduzindo(false);
 
@@ -459,7 +459,7 @@ public final class Player extends Mob implements Ranged {
 
 		} else if (quantosItens() == mochila.getSize()) {
 			semMana.play();
-			new BalaoDeFala("Não tenho espaço na mochila para este item!", this, 100);
+			new BalaoDeFala("Não tenho espaco na mochila para este item!", this, 100);
 		} else {
 			if (quantosItens() < mochila.getSize()) {
 
@@ -478,30 +478,30 @@ public final class Player extends Mob implements Ranged {
 		System.out.println(mochilaItens);
 	}
 
-	public void setBuffDano(final int buff, final int duraçao) {
+	public void setBuffDano(final int buff, final int duracao) {
 		if (isBuffDano) return;
 
-		new StatusBuffDano(duraçao);
-		coraçao.loop(true);
+		new StatusBuffDano(duracao);
+		coracao.loop(true);
 
 		setDano(getDanoCru() + buff);
 		isBuffDano = true;
-		particulasBuffForça.setProduzindo(true);
+		particulasBuffForca.setProduzindo(true);
 
 		timerBuffDano = new Timer(5, new ActionListener() {
 			int tickAtual = Principal.tickTotal;
 
 			public void actionPerformed(ActionEvent e) {
-				if (Principal.tickTotal >= tickAtual + duraçao) {
+				if (Principal.tickTotal >= tickAtual + duracao) {
 					setDano(getDanoCru() - buff);
 					isBuffDano = false;
-					particulasBuffForça.setProduzindo(false);
-					coraçao.loop(false);
+					particulasBuffForca.setProduzindo(false);
+					coracao.loop(false);
 					timerBuffDano.stop();
 				}
 
 				if (!isVivo()) {
-					coraçao.loop(false);
+					coracao.loop(false);
 					timerBuffDano.stop();
 				}
 
@@ -537,7 +537,7 @@ public final class Player extends Mob implements Ranged {
 		exp += quanto;
 		expTotal += quanto;
 		Grafico.exp.add(expTotal);
-		new ExpValorGanhaAnimaçao(getX(), getYSprite(), quanto);
+		new ExpValorGanhaAnimacao(getX(), getYSprite(), quanto);
 
 		while (checaLevel())
 			;
@@ -545,7 +545,7 @@ public final class Player extends Mob implements Ranged {
 
 	private boolean checaLevel() {
 		if (exp >= expLevel) {
-			new NovoStatusAnimaçao(getX(), getYSprite(), "LEVEL UP!", new Color(255, 215, 0), 18);
+			new NovoStatusAnimacao(getX(), getYSprite(), "LEVEL UP!", new Color(255, 215, 0), 18);
 			BackMusic.reduzir(150, 25);
 			levelUpSFX.play();
 			BarraExp.piscar(150);
@@ -647,9 +647,9 @@ public final class Player extends Mob implements Ranged {
 		return super.tomarHit(hit);
 	}
 
-	public void setGroundedTrue(final int duraçao) {
-		new StatusGrondedGUI(duraçao);
-		super.setGroundedTrue(duraçao);
+	public void setGroundedTrue(final int duracao) {
+		new StatusGrondedGUI(duracao);
+		super.setGroundedTrue(duracao);
 	}
 
 	public boolean usarMana(int quantidade) {
@@ -660,7 +660,7 @@ public final class Player extends Mob implements Ranged {
 			System.out.println("Mana insuficiente!");
 			semMana.play();
 
-			new NovoStatusAnimaçao(getX(), getY(), "NO MANA", new Color[] { new Color(0, 191, 255), Color.WHITE, Color.YELLOW }, NovoStatusAnimaçao.PADRAO);
+			new NovoStatusAnimacao(getX(), getY(), "NO MANA", new Color[] { new Color(0, 191, 255), Color.WHITE, Color.YELLOW }, NovoStatusAnimacao.PADRAO);
 			return false;
 		}
 	}

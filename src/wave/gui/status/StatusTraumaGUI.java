@@ -7,8 +7,8 @@ import wave.tools.Util;
 
 public class StatusTraumaGUI extends StatusGUI{
 
-	public StatusTraumaGUI(int duraçao, Player player) {
-		super(duraçao, "Trauma");
+	public StatusTraumaGUI(int duracao, Player player) {
+		super(duracao, "Trauma");
 	}
 	
 	public void update() {
@@ -29,7 +29,7 @@ public class StatusTraumaGUI extends StatusGUI{
 	}
 
 	@Override
-	public String getDescriçao() {
+	public String getDescricao() {
 		return "TRAUMATIZADO: Voce tomou dano recentemente, nao podendo assim regenerar passivamente.";
 	}
 

@@ -2,7 +2,7 @@ package wave.item;
 
 import java.awt.image.BufferedImage;
 
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.gui.menus.MenuMochila;
 import wave.mob.Player;
@@ -61,13 +61,13 @@ public class PotionVida extends Item implements Usavel{
 	public void usar() {
 		Item.drinkSFX.play();
 		Player.getPlayer().curar(Player.getPlayer().getVidaMax() / 3);
-		Animaçao ani = new Animaçao(Player.getPlayer().getXCentro(), Player.getPlayer().getYCentro(), Animaçao.particulasHealImgs, 3);
+		Animacao ani = new Animacao(Player.getPlayer().getXCentro(), Player.getPlayer().getYCentro(), Animacao.particulasHealImgs, 3);
 		ani.setSeguindo(Player.getPlayer());
 		ani.setScale(.45f);
 		ani.start();
 		
 		final Luz luzAni = new Luz(ani, ani.getWidth() - 20, 0, 255, 0, 100, 15, true, true, 0, 0);
-		luzAni.forçaVar.addAcaoNaFila(new ActionQueue() {
+		luzAni.forcaVar.addAcaoNaFila(new ActionQueue() {
 			public boolean action() {
 				luzAni.desativar(15);
 				return true;
@@ -78,7 +78,7 @@ public class PotionVida extends Item implements Usavel{
 	}
 	
 	public String getText() {
-		return "Uma poção mágica capaz de regenerar parte de sua vida. Você pode usa-la apertando a tecla 1(Padrão)";
+		return "Uma pocão mágica capaz de regenerar parte de sua vida. Você pode usa-la apertando a tecla 1(Padrão)";
 	}
 	
 	protected void mousePressed() {

@@ -16,7 +16,7 @@ public class StatusTrapPronta extends StatusGUI{
 	}
 
 	@Override
-	public String getDescriçao() {
+	public String getDescricao() {
 		return "ARMADILHA PRONTA: Apertando 'E' você pode colocar uma poderosa trap, causando dano e envenenado quem a pisar.";
 	}
 }

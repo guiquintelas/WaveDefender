@@ -15,9 +15,9 @@ import wave.audio.RandomSFXGrupo;
 import wave.graphics.BarraDeVida;
 import wave.graphics.ControladorSangue;
 import wave.graphics.Grafico;
-import wave.graphics.ModValorAnimaçao;
-import wave.graphics.NovoStatusAnimaçao;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.ModValorAnimacao;
+import wave.graphics.NovoStatusAnimacao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.gui.status.StatusEnvenenadoGUI;
 import wave.gui.status.StatusLentoGUI;
@@ -43,12 +43,12 @@ public abstract class Mob extends DimensionalObj {
 	private int vidaMax;
 	protected double speed;
 	private double speedMax;
-	protected int forçaPorcentagemLento = 0;
+	protected int forcaPorcentagemLento = 0;
 	private int dano;
 	private int defesa;
 	private double velAtk;
 
-	// booleanas de condiçao
+	// booleanas de condicao
 	protected boolean isAndando = false;
 	protected boolean isInvuKnockBack = false;
 	protected boolean isAtkAReady = true;
@@ -92,11 +92,11 @@ public abstract class Mob extends DimensionalObj {
 	protected CriadorDeParticulas particulasGrounded;
 	protected CriadorDeParticulas particulasInvisivel;
 	protected CriadorDeParticulas particulasEnvenenado;
-	protected CriadorDeParticulas particulasBuffForça;
+	protected CriadorDeParticulas particulasBuffForca;
 	protected CriadorDeParticulas particulaTomarDano;
 
 	protected CriadorDeParticulas particulasFogo;
-	protected CriadorDeParticulas particulasFumaça;
+	protected CriadorDeParticulas particulasFumaca;
 	protected CriadorDeParticulas particulasFagulha;
 
 	//Luz
@@ -132,7 +132,7 @@ public abstract class Mob extends DimensionalObj {
 
 		barraVida = new BarraDeVida(this);
 
-		particulasInvisivel = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, Util.removeFirsts(Animaçao.fumaçaImgs, 3), .4f, 3, 50);
+		particulasInvisivel = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, Util.removeFirsts(Animacao.fumacaImgs, 3), .4f, 3, 50);
 		//particulasInvisivel = new CriadorDeParticulas(getX(), getYSprite(), with, heightSprite, 2, 6, new Color(190,190,190), 100);
 		//particulasInvisivel.setContorno(true);
 		particulasInvisivel.setAlphaVar(45, 10);
@@ -144,10 +144,10 @@ public abstract class Mob extends DimensionalObj {
 		particulasEnvenenado.setAlphaVar(75, 30);
 		particulasEnvenenado.addColor(new Color(85, 107, 47));
 
-		particulasBuffForça = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, 1, 7, new Color(210, 105, 30), 30);
-		particulasBuffForça.setSeguindo(true, this);
+		particulasBuffForca = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, 1, 7, new Color(210, 105, 30), 30);
+		particulasBuffForca.setSeguindo(true, this);
 
-		particulasFogo = new CriadorDeParticulas(getX(), getY(), width, this.heightSprite, Animaçao.fogoImgs, .2f, 3, (width * this.heightSprite) / 25);
+		particulasFogo = new CriadorDeParticulas(getX(), getY(), width, this.heightSprite, Animacao.fogoImgs, .2f, 3, (width * this.heightSprite) / 25);
 		particulasFogo.setSpeed(.5);
 		particulasFogo.setAngulo(90, 20);
 		particulasFogo.addColor(Color.YELLOW);
@@ -182,10 +182,10 @@ public abstract class Mob extends DimensionalObj {
 		});
 		//particulasFogo.setSeguindo(true, this);
 
-		particulasFumaça = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, Animaçao.fumaçaEscuraImgs, .6f, 3, (width * this.heightSprite) / 80);
-		particulasFumaça.setSpeed(.25);
-		particulasFumaça.setAngulo(90, 20);
-		particulasFumaça.setAlphaDelay(30);
+		particulasFumaca = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, Animacao.fumacaEscuraImgs, .6f, 3, (width * this.heightSprite) / 80);
+		particulasFumaca.setSpeed(.25);
+		particulasFumaca.setAngulo(90, 20);
+		particulasFumaca.setAlphaDelay(30);
 
 		particulasFagulha = new CriadorDeParticulas(getX(), getYSprite(), width, this.heightSprite, 1, 1, Color.ORANGE, (width * this.heightSprite) / 110);
 		particulasFagulha.setSpeed(2.5);
@@ -217,7 +217,7 @@ public abstract class Mob extends DimensionalObj {
 		return arrayCarregado;
 	}
 
-	private void updateSpriteGrounded(final int duraçao) {
+	private void updateSpriteGrounded(final int duracao) {
 		if (isGrounded) {
 
 			if (timerGroundedAni != null) {
@@ -236,7 +236,7 @@ public abstract class Mob extends DimensionalObj {
 
 						spriteGroundedAtual = groundedSprite.get(indexAtual);
 
-						if (Principal.tickTotal - tickInicial >= duraçao - 10) {
+						if (Principal.tickTotal - tickInicial >= duracao - 10) {
 							indexAtual--;
 							if (indexAtual < 0) {
 								indexAtual = 0;
@@ -375,8 +375,8 @@ public abstract class Mob extends DimensionalObj {
 		return speedMax;
 	}
 
-	public int getForçaPorcentagemLento() {
-		return forçaPorcentagemLento;
+	public int getForcaPorcentagemLento() {
+		return forcaPorcentagemLento;
 	}
 
 	protected int getVelAtkTickDelay() {
@@ -422,7 +422,7 @@ public abstract class Mob extends DimensionalObj {
 		setVida(vida - hitDefesa);
 		System.out.println(toString() + " tomou " + hitDefesa + " de dano");
 		getTomarHitSFX().play();
-		new ModValorAnimaçao(getX(), getYSprite(), hitDefesa, ModValorAnimaçao.COR_DANO);
+		new ModValorAnimacao(getX(), getYSprite(), hitDefesa, ModValorAnimacao.COR_DANO);
 		new ControladorSangue(getXCentro(), getYCentro(), sangueCor(), hitDefesa);
 
 		setInvisivel(false);
@@ -433,7 +433,7 @@ public abstract class Mob extends DimensionalObj {
 		setVida(vida - hit);
 		System.out.println(toString() + " tomou " + hit + " de dano");
 		getTomarHitSFX().play();
-		new ModValorAnimaçao(getX(), getYSprite(), hit, ModValorAnimaçao.COR_DANO);
+		new ModValorAnimacao(getX(), getYSprite(), hit, ModValorAnimacao.COR_DANO);
 		new ControladorSangue(getXCentro(), getYCentro(), sangueCor(), hit);
 
 		setInvisivel(false);
@@ -443,25 +443,25 @@ public abstract class Mob extends DimensionalObj {
 	public void tomarHitPassivo(int hit) {
 		setVida(vida - hit);
 		System.out.println(toString() + " tomou " + hit + " de dano");
-		new ModValorAnimaçao(getX(), getYSprite(), hit, ModValorAnimaçao.COR_DANO);
+		new ModValorAnimacao(getX(), getYSprite(), hit, ModValorAnimacao.COR_DANO);
 	}
 
 	public void tomarHitFogo(int hit) {
 		setVida(vida - hit);
 		System.out.println(toString() + " tomou " + hit + " de dano com fogo");
-		new ModValorAnimaçao(getX(), getYSprite(), hit, Color.RED);
+		new ModValorAnimacao(getX(), getYSprite(), hit, Color.RED);
 	}
 
-	public void setGroundedTrue(final int duraçao) {
+	public void setGroundedTrue(final int duracao) {
 		if (!isGrounded) {
 			spriteGroundedAtual = groundedSprite.get(0);
 		}
 		isGrounded = true;
-		updateSpriteGrounded(duraçao);
+		updateSpriteGrounded(duracao);
 		TileMap.getTile(getXCentro(), getYCentro()).setGrama();
 
 		groundedSFX.play();
-		new NovoStatusAnimaçao(getX(), getYSprite(), "GROUNDED!");
+		new NovoStatusAnimacao(getX(), getYSprite(), "GROUNDED!");
 		final int tickAtual = Principal.tickTotal;
 
 		if (timerGround != null) {
@@ -472,7 +472,7 @@ public abstract class Mob extends DimensionalObj {
 
 		timerGround = new Timer(5, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Principal.tickTotal >= (tickAtual + duraçao)) {
+				if (Principal.tickTotal >= (tickAtual + duracao)) {
 					isGrounded = false;
 					timerGround.stop();
 				}
@@ -482,7 +482,7 @@ public abstract class Mob extends DimensionalObj {
 		timerGround.start();
 	}
 
-	public void setInvisivel(final int duraçao) {
+	public void setInvisivel(final int duracao) {
 		setInvisivel(true);
 
 		if (timerInvisivel != null) {
@@ -500,7 +500,7 @@ public abstract class Mob extends DimensionalObj {
 					timerInvisivel.stop();
 				}
 
-				if (Principal.tickTotal >= tickAtual + duraçao) {
+				if (Principal.tickTotal >= tickAtual + duracao) {
 					setInvisivel(false);
 					timerInvisivel.stop();
 				}
@@ -514,14 +514,14 @@ public abstract class Mob extends DimensionalObj {
 		timerInvisivel.start();
 	}
 
-	public void setLentoTrue(final int duraçao, int forçaPorcentagem) {
-		if (forçaPorcentagemLento > forçaPorcentagem) {
+	public void setLentoTrue(final int duracao, int forcaPorcentagem) {
+		if (forcaPorcentagemLento > forcaPorcentagem) {
 			return;
 		}
 
-		setLento(forçaPorcentagem);
+		setLento(forcaPorcentagem);
 		if (this instanceof Player) {
-			new StatusLentoGUI(duraçao);
+			new StatusLentoGUI(duracao);
 		}
 
 		if (timerLento != null) {
@@ -533,7 +533,7 @@ public abstract class Mob extends DimensionalObj {
 		final int tickAtual = Principal.tickTotal;
 		timerLento = new Timer(5, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (Principal.tickTotal >= (tickAtual + duraçao)) {
+				if (Principal.tickTotal >= (tickAtual + duracao)) {
 					setLento(0);
 					timerLento.stop();
 				}
@@ -547,13 +547,13 @@ public abstract class Mob extends DimensionalObj {
 		if (porcentagem == 0) {
 			this.isLento = false;
 			speed = getSpeedMax();
-			this.forçaPorcentagemLento = 0;
+			this.forcaPorcentagemLento = 0;
 
 		} else {
 			this.isLento = true;
-			this.forçaPorcentagemLento = porcentagem;
+			this.forcaPorcentagemLento = porcentagem;
 			speed = getSpeedMax() * ((100.0 - porcentagem) / 100.0);
-			new NovoStatusAnimaçao(getX(), getYSprite(), "SPEED DOWN");
+			new NovoStatusAnimacao(getX(), getYSprite(), "SPEED DOWN");
 		}
 	}
 
@@ -565,18 +565,18 @@ public abstract class Mob extends DimensionalObj {
 		this.fireDano = dano;
 
 		particulasFogo.setProduzindo(true);
-		particulasFumaça.setProduzindo(true);
+		particulasFumaca.setProduzindo(true);
 		particulasFagulha.setProduzindo(true);
 
-		luzFogo.forçaVar.clearFila();
-		luzFogo.forçaVar.variar(false);
+		luzFogo.forcaVar.clearFila();
+		luzFogo.forcaVar.variar(false);
 		luzFogo.setAtiva(true);
-		luzFogo.forçaVar.fadeInSin(0, 60, 50);
-		luzFogo.forçaVar.variar(true);
-		luzFogo.forçaVar.addAcaoNaFila(new ActionQueue() {
+		luzFogo.forcaVar.fadeInSin(0, 60, 50);
+		luzFogo.forcaVar.variar(true);
+		luzFogo.forcaVar.addAcaoNaFila(new ActionQueue() {
 			public boolean action() {
-				luzFogo.forçaVar.oscilar(20, 100, true);
-				luzFogo.forçaVar.variar(true);
+				luzFogo.forcaVar.oscilar(20, 100, true);
+				luzFogo.forcaVar.variar(true);
 				return true;
 			}
 		});
@@ -603,7 +603,7 @@ public abstract class Mob extends DimensionalObj {
 					particulasFogo.setSpeed(2);
 					particulasFogo.setAlphaDelay(0);
 
-					particulasFumaça.setPorcentagem(particulasFumaça.getPorcentagemInicial() * 3);
+					particulasFumaca.setPorcentagem(particulasFumaca.getPorcentagemInicial() * 3);
 				}
 
 				if (Principal.tickTotal >= tickAtual + 10) {
@@ -612,23 +612,23 @@ public abstract class Mob extends DimensionalObj {
 					particulasFogo.setSpeed(.5);
 					particulasFogo.setAlphaDelay(40);
 
-					particulasFumaça.setPorcentagem(particulasFumaça.getPorcentagemInicial());
+					particulasFumaca.setPorcentagem(particulasFumaca.getPorcentagemInicial());
 				}
 
 				if (Principal.tickTotal >= tickFinal || !isVivo() || !isFire) {
 					timerFire.stop();
 					particulasFogo.setProduzindo(false);
-					particulasFumaça.setProduzindo(false);
+					particulasFumaca.setProduzindo(false);
 					particulasFagulha.setProduzindo(false);
 					isFire = false;
 
-					luzFogo.forçaVar.variar(false);
-					luzFogo.forçaVar.addAcaoNaFila(new ActionQueue() {
+					luzFogo.forcaVar.variar(false);
+					luzFogo.forcaVar.addAcaoNaFila(new ActionQueue() {
 						public boolean action() {
-							luzFogo.forçaVar.fadeOutSin(luzFogo.getForça(), 0, 50);
-							luzFogo.forçaVar.variar(true);
+							luzFogo.forcaVar.fadeOutSin(luzFogo.getForca(), 0, 50);
+							luzFogo.forcaVar.variar(true);
 
-							luzFogo.forçaVar.addAcaoNaFila(new ActionQueue() {
+							luzFogo.forcaVar.addAcaoNaFila(new ActionQueue() {
 								public boolean action() {
 									luzFogo.setAtiva(false);
 									return true;
@@ -644,26 +644,26 @@ public abstract class Mob extends DimensionalObj {
 
 	}
 
-	public void setBuffDano(final int buff, final int duraçao) {
+	public void setBuffDano(final int buff, final int duracao) {
 		if (isBuffDano) return;
 
 		this.dano += buff;
 		isBuffDano = true;
-		particulasBuffForça.setProduzindo(true);
+		particulasBuffForca.setProduzindo(true);
 
 		timerBuffDano = new Timer(5, new ActionListener() {
 			int tickAtual = Principal.tickTotal;
 
 			public void actionPerformed(ActionEvent e) {
-				if (Principal.tickTotal >= tickAtual + duraçao) {
+				if (Principal.tickTotal >= tickAtual + duracao) {
 					dano -= buff;
 					isBuffDano = false;
-					particulasBuffForça.setProduzindo(false);
+					particulasBuffForca.setProduzindo(false);
 					timerBuffDano.stop();
 				}
 
 				if (!isVivo()) {
-					particulasBuffForça.setProduzindo(false);
+					particulasBuffForca.setProduzindo(false);
 					timerBuffDano.stop();
 				}
 
@@ -677,7 +677,7 @@ public abstract class Mob extends DimensionalObj {
 		isEnvenenado = true;
 		particulasEnvenenado.setProduzindo(true);
 		envenenadoSFX.play();
-		new NovoStatusAnimaçao(getX(), getYSprite(), "POISONED");
+		new NovoStatusAnimacao(getX(), getYSprite(), "POISONED");
 
 		if (this instanceof Player) {
 			new StatusEnvenenadoGUI(ticksVeneno * DELAY_VENENO_TICK, (Player) this);
@@ -721,11 +721,11 @@ public abstract class Mob extends DimensionalObj {
 		if (vida > getVidaMax()) {
 			setVida(getVidaMax());
 		}
-		int mudançaVida = vida - vidaAntes;
+		int mudancaVida = vida - vidaAntes;
 
-		if (mudançaVida > 0) {
-			System.out.println(toString() + " healou " + mudançaVida + " de vida");
-			new ModValorAnimaçao(getX(), getYSprite(), mudançaVida, Color.GREEN);
+		if (mudancaVida > 0) {
+			System.out.println(toString() + " healou " + mudancaVida + " de vida");
+			new ModValorAnimacao(getX(), getYSprite(), mudancaVida, Color.GREEN);
 			if (sfx) healSFX.play();
 		}
 
@@ -737,11 +737,11 @@ public abstract class Mob extends DimensionalObj {
 		if (vida > getVidaMax()) {
 			vida = getVidaMax();
 		}
-		int mudançaVida = vida - vidaAntes;
+		int mudancaVida = vida - vidaAntes;
 
-		if (mudançaVida > 0) {
-			System.out.println(toString() + " healou " + mudançaVida + " de vida");
-			new ModValorAnimaçao(getX(), getYSprite(), mudançaVida, Color.GREEN);
+		if (mudancaVida > 0) {
+			System.out.println(toString() + " healou " + mudancaVida + " de vida");
+			new ModValorAnimacao(getX(), getYSprite(), mudancaVida, Color.GREEN);
 			healSFX.play();
 		}
 
@@ -832,9 +832,9 @@ public abstract class Mob extends DimensionalObj {
 		updateMob();
 		particulasInvisivel.update(getX(), getYSprite());
 		particulasEnvenenado.update(getX(), getYSprite());
-		particulasBuffForça.update(getX(), getYSprite());
+		particulasBuffForca.update(getX(), getYSprite());
 		particulasFogo.update(getX(), getYSprite());
-		particulasFumaça.update(getX(), getYSprite());
+		particulasFumaca.update(getX(), getYSprite());
 		particulasFagulha.update(getX(), getYSprite());
 	}
 

@@ -7,8 +7,8 @@ import wave.tools.Util;
 public class StatusBuffDano extends StatusGUI{
 	private static final BufferedImage img = Util.carregarImg("/Sprites/fist2.png");
 
-	public StatusBuffDano(int duraçao) {
-		super(duraçao, "Buff Dano");
+	public StatusBuffDano(int duracao) {
+		super(duracao, "Buff Dano");
 	}
 
 	@Override
@@ -17,8 +17,8 @@ public class StatusBuffDano extends StatusGUI{
 	}
 
 	@Override
-	public String getDescriçao() {
-		return "BUFF DE DANO: Você possui alguma forma de magia em seu corpo que aumenta sua força.";
+	public String getDescricao() {
+		return "BUFF DE DANO: Você possui alguma forma de magia em seu corpo que aumenta sua forca.";
 	}
 
 }

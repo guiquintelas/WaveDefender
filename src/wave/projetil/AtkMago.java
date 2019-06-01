@@ -3,14 +3,14 @@ package wave.projetil;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.mob.Mago;
 import wave.mob.Player;
 import wave.particula.CriadorDeParticulas;
 
 public class AtkMago extends AutoAtkProjetil {
-	private Animaçao ani;
+	private Animacao ani;
 
 	private CriadorDeParticulas particulas;	
 
@@ -39,7 +39,7 @@ public class AtkMago extends AutoAtkProjetil {
 		particulas.addColor(new Color(160, 32, 240));
 		
 		
-		ani = new Animaçao(getXCentro(), getYCentro(), Animaçao.particulaEsfericaImgs, 1);
+		ani = new Animacao(getXCentro(), getYCentro(), Animacao.particulaEsfericaImgs, 1);
 		if (isFurioso) {
 			ani.setScale(.225f);
 		} else {

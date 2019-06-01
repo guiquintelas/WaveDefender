@@ -7,11 +7,11 @@ import wave.mob.Player;
 import wave.tools.Util;
 
 public class StatusEnvenenadoGUI extends StatusGUI{
-	int duraçao;
+	int duracao;
 
-	public StatusEnvenenadoGUI(int duraçao, Player player) {
-		super(duraçao, "Envenenado");
-		this.duraçao = duraçao;
+	public StatusEnvenenadoGUI(int duracao, Player player) {
+		super(duracao, "Envenenado");
+		this.duracao = duracao;
 	}
 
 	public void update() {
@@ -19,8 +19,8 @@ public class StatusEnvenenadoGUI extends StatusGUI{
 		super.update();
 	}
 	
-	public String getDescriçao() {
-		return "ENVENENADO: Voce foi envenenado e vai sofrer dano " + (duraçao / Mob.DELAY_VENENO_TICK) + " vezes";
+	public String getDescricao() {
+		return "ENVENENADO: Voce foi envenenado e vai sofrer dano " + (duracao / Mob.DELAY_VENENO_TICK) + " vezes";
 	}
 
 	private void checaStatus() {

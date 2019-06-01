@@ -97,13 +97,13 @@ public class JanelaJogo {
 				}
 				
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					if (!Principal.menuOpçoes() && !Principal.menuChar && !Principal.menuMochila && !Principal.menuLevel){
-						Principal.setMenuOpçoes(true);
+					if (!Principal.menuOpcoes() && !Principal.menuChar && !Principal.menuMochila && !Principal.menuLevel){
+						Principal.setMenuOpcoes(true);
 					} else {
 						if (Principal.menuChar)Principal.menuChar = false;
 						if (Principal.menuMochila) MenuMochila.fecharMenu();
 						if (Principal.menuLevel) MenuLevel.fecharMenu();
-						if (Principal.menuOpçoes()) Principal.setMenuOpçoes(false);
+						if (Principal.menuOpcoes()) Principal.setMenuOpcoes(false);
 					}		
 				}
 				

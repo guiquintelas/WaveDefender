@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import wave.audio.RandomSFXGrupo;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.mob.Player;
 import wave.particula.CriadorDeParticulas;
@@ -19,7 +19,7 @@ public class ProjetilSangue extends ProjetilPerseguidorMob{
 	private boolean isInvisivel = false;
 	
 	private static final RandomSFXGrupo sfxColisao = new RandomSFXGrupo(new String[]{"/SFX/projetilSangue1.ogg", "/SFX/projetilSangue2.ogg", "/SFX/projetilSangue3.ogg"});
-	private static final ArrayList<BufferedImage> imgs = Util.carregarArrayBI(Animaçao.explosaoSrite, 0, 1152, 64, 64, 26);
+	private static final ArrayList<BufferedImage> imgs = Util.carregarArrayBI(Animacao.explosaoSrite, 0, 1152, 64, 64, 26);
 	
 	private CriadorDeParticulas particulas;
 
@@ -70,7 +70,7 @@ public class ProjetilSangue extends ProjetilPerseguidorMob{
 		
 		sfxColisao.play();
 		particulas.setProduzindo(false);
-		new Animaçao(getX(), getY(), imgs, 1).start();;
+		new Animacao(getX(), getY(), imgs, 1).start();;
 		
 	}
 	

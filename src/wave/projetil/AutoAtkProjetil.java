@@ -3,7 +3,7 @@ package wave.projetil;
 import java.awt.Graphics2D;
 
 import wave.graphics.SombraDinamica;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.mob.Player;
 import wave.mob.Ranged;
 
@@ -61,7 +61,7 @@ public abstract class AutoAtkProjetil extends Projetil {
 		double distanciaPercorrida = Math.sqrt(Math.pow(xInicial - getXCentro(), 2) + Math.pow(yInicial - getYCentro(), 2));
 		if (distanciaPercorrida > alcance) {
 			removeProjetil();
-			Animaçao.aniFumaçaPadrao(getXCentro(), getYCentro());
+			Animacao.aniFumacaPadrao(getXCentro(), getYCentro());
 		}
 
 	}

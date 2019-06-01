@@ -11,7 +11,7 @@ import javax.swing.Timer;
 import wave.audio.RandomSFXGrupo;
 import wave.audio.SoundEffect;
 import wave.graphics.BalaoDeFala;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.item.Dropper;
 import wave.particula.CriadorDeParticulas;
@@ -55,13 +55,13 @@ public class Vampiro extends Monstro{
 		particulasHit.setAlphaVar(25, 10);
 		particulasHit.setSeguindo(true, this);
 		
-		particulasFicarInvi = new CriadorDeParticulas(0, 0, width, heightSprite, Util.removeFirsts(Animaçao.fumaçaImgs, 3), .6f, 3, 100);
+		particulasFicarInvi = new CriadorDeParticulas(0, 0, width, heightSprite, Util.removeFirsts(Animacao.fumacaImgs, 3), .6f, 3, 100);
 		particulasFicarInvi.setSpeed(1.2);
 		particulasFicarInvi.setAlphaVar(25, 10);
 		particulasFicarInvi.setAngulo(90, 90);
 		particulasFicarInvi.setAlphaVar(50, 20);
 		
-		particulasFicarInviSec = new CriadorDeParticulas(0, 0, width, heightSprite, Util.removeFirsts(Animaçao.fumaçaEscuraImgs, 3), .6f, 3, 25);
+		particulasFicarInviSec = new CriadorDeParticulas(0, 0, width, heightSprite, Util.removeFirsts(Animacao.fumacaEscuraImgs, 3), .6f, 3, 25);
 		particulasFicarInviSec.setSpeed(1.2);
 		particulasFicarInviSec.setAlphaVar(25, 10);
 		particulasFicarInviSec.setAngulo(90, 90);
@@ -250,7 +250,7 @@ public class Vampiro extends Monstro{
 	
 	protected void droppar() {
 		dropper.setCap(2);
-		dropper.addItem("Potion de Força", 10);
+		dropper.addItem("Potion de Forca", 10);
 		dropper.addItem(Dropper.MOCHILA_CHIQUE, 4);
 		dropper.addItem(Dropper.COURO_BOTA, 5);
 		dropper.addItem(Dropper.COURO_LEGS, 5);

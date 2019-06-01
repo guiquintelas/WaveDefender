@@ -14,13 +14,13 @@ public class LuzBruta extends Luz{
 
 	public LuzBruta(Dimensional d, int raio, int r, int g, int b, double forca, int fade) {
 		super(d, raio, r, g, b, forca, fade);
-		forçaVar.setAtivo(true);
+		forcaVar.setAtivo(true);
 		raioVar.setAtivo(true);
 	}
 	
-	public LuzBruta(Dimensional d, int raio, int r, int g, int b, double forca, int fade, boolean variarRaio, boolean variarForça, int oscRaio, int oscForça) {
-		super(d, raio, r, g, b, forca, fade, variarRaio, variarForça, oscRaio, oscRaio);
-		forçaVar.setAtivo(true);
+	public LuzBruta(Dimensional d, int raio, int r, int g, int b, double forca, int fade, boolean variarRaio, boolean variarForca, int oscRaio, int oscForca) {
+		super(d, raio, r, g, b, forca, fade, variarRaio, variarForca, oscRaio, oscRaio);
+		forcaVar.setAtivo(true);
 		raioVar.setAtivo(true);
 	}
 	
@@ -44,7 +44,7 @@ public class LuzBruta extends Luz{
 				double dist = Math.sqrt(((raio - x)*(raio - x)) + ((raio - y)*(raio - y)));
 
 				if (dist < raio) {
-					pixelLuzABruto[index + 3] = (int)(((255 / (double) raio) * (raio - dist)) / (100 / força));
+					pixelLuzABruto[index + 3] = (int)(((255 / (double) raio) * (raio - dist)) / (100 / forca));
 					pixelLuzABruto[index + 2] =  b;
 					pixelLuzABruto[index + 1] =  g;
 					pixelLuzABruto[index] = r;

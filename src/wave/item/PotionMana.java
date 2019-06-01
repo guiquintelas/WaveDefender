@@ -26,7 +26,7 @@ public class PotionMana extends Item implements Usavel{
 	
 	
 	public String getText() {
-		return "Uma poção bem forte que regenera uma parte de sua mana.";
+		return "Uma pocão bem forte que regenera uma parte de sua mana.";
 	}
 
 	@Override

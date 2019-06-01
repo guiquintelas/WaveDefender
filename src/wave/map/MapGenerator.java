@@ -18,7 +18,7 @@ public class MapGenerator {
 		criarGrama();
 		criarBau();
 		
-		System.out.println("tempo de criação do mapa: " + (System.currentTimeMillis() - tempoA) + "ms");
+		System.out.println("tempo de criacao do mapa: " + (System.currentTimeMillis() - tempoA) + "ms");
 	}
 
 	private static void criarBau() {
@@ -27,14 +27,14 @@ public class MapGenerator {
 			bau.setExp(Player.getPlayer().getExpTotal() / 3);
 			bau.addItem("Mochila", 100);
 			bau.addItem("Potion de Vida", 70);
-			bau.addItem("Potion de Força", 30);
+			//bau.addItem("Potion de Forca", 30);
 			
-			if (Player.getPlayer().equips.get(Equip.CABEÇA) != null) 	bau.addItem(Player.getPlayer().equips.get(Equip.CABEÇA).toString(), 30);
+			if (Player.getPlayer().equips.get(Equip.CABECA) != null) 	bau.addItem(Player.getPlayer().equips.get(Equip.CABECA).toString(), 30);
 			if (Player.getPlayer().equips.get(Equip.PEITO) != null) 	bau.addItem(Player.getPlayer().equips.get(Equip.PEITO).toString(), 30);
 			if (Player.getPlayer().equips.get(Equip.PERNA) != null) 	bau.addItem(Player.getPlayer().equips.get(Equip.PERNA).toString(), 30);
 			if (Player.getPlayer().equips.get(Equip.PE) != null) 		bau.addItem(Player.getPlayer().equips.get(Equip.PE).toString(), 30);
 			
-			new BalaoDeFala("Esse estranho baú deve conter lembranças da minha vida passada...", Player.getPlayer(), 250);
+			new BalaoDeFala("Esse estranho baú deve conter lembrancas da minha vida passada...", Player.getPlayer(), 250);
 		}
 		
 	}

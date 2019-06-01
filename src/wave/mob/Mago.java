@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import wave.audio.RandomSFXGrupo;
 import wave.audio.SoundEffect;
 import wave.graphics.BalaoDeFala;
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.item.Dropper;
 import wave.particula.CriadorDeParticulas;
@@ -28,9 +28,9 @@ public class Mago extends Monstro implements Ranged{
 	
 	private static final int RANGE_MIN_TP = 400;
 	
-	//Animaçoes
-	private static final ArrayList<BufferedImage> imgsTp = Util.carregarArrayBI(Animaçao.explosaoSrite, 0, 0, 64, 64, 32);
-	private static final ArrayList<BufferedImage> imgsMorte = Util.carregarArrayBI(Animaçao.explosaoSrite, 0, 832, 64, 64, 40);
+	//Animacoes
+	private static final ArrayList<BufferedImage> imgsTp = Util.carregarArrayBI(Animacao.explosaoSrite, 0, 0, 64, 64, 32);
+	private static final ArrayList<BufferedImage> imgsMorte = Util.carregarArrayBI(Animacao.explosaoSrite, 0, 832, 64, 64, 40);
 
 	private CriadorDeParticulas particulasFurisoso;
 	private CriadorDeParticulas particulasMorte;
@@ -141,7 +141,7 @@ public class Mago extends Monstro implements Ranged{
 			particulasTPOrigem.update(getX() + 10, getY() + 10);
 			particulasTPOrigem.setProduzindoXYConstante(true, 25);
 			
-			Animaçao aniA = new Animaçao(getXCentro(), getYSpriteCentro(), imgsTp, 1);
+			Animacao aniA = new Animacao(getXCentro(), getYSpriteCentro(), imgsTp, 1);
 			aniA.setScale(1.2f);
 			aniA.start();
 			
@@ -160,7 +160,7 @@ public class Mago extends Monstro implements Ranged{
 			particulasTPDestino.update(getX() + 10, getY() + 10);
 			particulasTPDestino.setProduzindoXYConstante(true, 25);
 			
-			Animaçao ani = new Animaçao(getXCentro(), getYSpriteCentro(), imgsTp, 2);
+			Animacao ani = new Animacao(getXCentro(), getYSpriteCentro(), imgsTp, 2);
 			ani.setInvertido(true);
 			ani.setScale(1.2f);
 			ani.setFadeOut(18, .6f);
@@ -233,13 +233,13 @@ public class Mago extends Monstro implements Ranged{
 			particulasMorte.setProduzindoXYConstante(true, 25);
 			particulasFurisoso.setProduzindo(false);
 			
-			Animaçao ani = new Animaçao(getXCentro(), getYSpriteCentro(), imgsMorte, 3);
+			Animacao ani = new Animacao(getXCentro(), getYSpriteCentro(), imgsMorte, 3);
 			ani.setScale(1.3f);
 			ani.start();
 			
 			final Luz luzMorte = new Luz(ani, ani.getWidth() - 30, 150, 150, 255, 100, 35, true, true, 0, 0);
-			luzMorte.forçaVar.addEsperaNaFila(30);
-			luzMorte.forçaVar.addAcaoNaFila(new ActionQueue() {
+			luzMorte.forcaVar.addEsperaNaFila(30);
+			luzMorte.forcaVar.addAcaoNaFila(new ActionQueue() {
 				public boolean action() {
 					luzMorte.desativar(35);
 					return true;

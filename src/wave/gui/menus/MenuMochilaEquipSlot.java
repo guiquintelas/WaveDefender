@@ -10,7 +10,7 @@ import wave.mob.Player;
 import wave.tools.Util;
 
 public class MenuMochilaEquipSlot extends MenuMochilaSlot{
-	private static final BufferedImage imgCabeça = Util.carregarImg("/Sprites/equipCabeça.png");
+	private static final BufferedImage imgCabeca = Util.carregarImg("/Sprites/equipCabeca.png");
 	private static final BufferedImage imgPeito = Util.carregarImg("/Sprites/equipPeito.png");
 	private static final BufferedImage imgPerna = Util.carregarImg("/Sprites/equipPerna.png");
 	private static final BufferedImage imgPe = Util.carregarImg("/Sprites/equipPe.png");
@@ -24,7 +24,7 @@ public class MenuMochilaEquipSlot extends MenuMochilaSlot{
 	
 	private static HashMap<String, BufferedImage> carregarHashMap() {
 		HashMap<String, BufferedImage> hash = new HashMap<String, BufferedImage>();
-		hash.put(Equip.CABEÇA, imgCabeça);
+		hash.put(Equip.CABECA, imgCabeca);
 		hash.put(Equip.PEITO, imgPeito);
 		hash.put(Equip.PERNA, imgPerna);
 		hash.put(Equip.PE, imgPe);
@@ -42,7 +42,7 @@ public class MenuMochilaEquipSlot extends MenuMochilaSlot{
 		
 		switch (quantos) {
 		case 1:
-			this.id = Equip.CABEÇA;
+			this.id = Equip.CABECA;
 			break;
 
 		case 2:

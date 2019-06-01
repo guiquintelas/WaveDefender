@@ -7,8 +7,8 @@ import wave.tools.Util;
 
 public class StatusLentoGUI extends StatusGUI {
 
-	public StatusLentoGUI(int duraçao) {
-		super(duraçao, "Lento");
+	public StatusLentoGUI(int duracao) {
+		super(duracao, "Lento");
 	}
 
 	public void update() {
@@ -28,7 +28,7 @@ public class StatusLentoGUI extends StatusGUI {
 	}
 
 	@Override
-	public String getDescriçao() {
-		return "LENTO: Voce foi atingido com uma magia, perdendo " + Player.getPlayer().getForçaPorcentagemLento() + "% de speed.";
+	public String getDescricao() {
+		return "LENTO: Voce foi atingido com uma magia, perdendo " + Player.getPlayer().getForcaPorcentagemLento() + "% de speed.";
 	}
 }

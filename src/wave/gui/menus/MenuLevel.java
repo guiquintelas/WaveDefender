@@ -82,7 +82,7 @@ public class MenuLevel extends Dimensional{
 	
 	
 	public static void abrirMenu() {
-		if (!Principal.menuMochila && !Principal.menuOpçoes()) {
+		if (!Principal.menuMochila && !Principal.menuOpcoes()) {
 			Principal.menuLevel = true;
 			Principal.setPause(true);
 			pontosLevelTemp = Player.getPlayer().pontosLevel;
@@ -134,7 +134,7 @@ public class MenuLevel extends Dimensional{
 		projetilDuplo.addBotaoLimitador(chanceVeneno, 3);
 		projetilDuplo.addBotaoLimitador(maxAlcance, 4);
 		
-		projetilTriplo = new BotaoSkill(x + WIDTH/2 + 5, y + 30 + 35 + 40 + 40 + 20, 1, imgProjTriplo, "Projetil Triplo: Sinta a emoção de atirar com uma shotgun.");
+		projetilTriplo = new BotaoSkill(x + WIDTH/2 + 5, y + 30 + 35 + 40 + 40 + 20, 1, imgProjTriplo, "Projetil Triplo: Sinta a emocão de atirar com uma shotgun.");
 		projetilTriplo.addBotaoLimitador(projetilDuplo, 1);
 		projetilTriplo.addBotaoLimitador(chanceVeneno, 6);
 	}
@@ -312,7 +312,7 @@ final class BotaoSkill extends Descritivo{
 	}
 
 	@Override
-	public String getDescriçao() {
+	public String getDescricao() {
 		return descricao;
 	}
 	

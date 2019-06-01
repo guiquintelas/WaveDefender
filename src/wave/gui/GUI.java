@@ -16,7 +16,7 @@ import wave.gui.menus.MenuLevel;
 import wave.gui.status.StatusGUI;
 import wave.input.ListenerManager;
 import wave.input.MouseListener;
-import wave.item.PotionForça;
+import wave.item.PotionForca;
 import wave.item.PotionVida;
 import wave.mob.Monstro;
 import wave.mob.Player;
@@ -134,9 +134,9 @@ public class GUI {
 			g.drawImage(PotionVida.imgPot, 203, 32, null);
 			g.drawString(Integer.toString(PotionVida.quantos), 220, 48);
 			
-			if (!PotionForça.primeira) {
-				g.drawImage(PotionForça.imgPot, 238, 32, null);
-				g.drawString("" + PotionForça.quantos, 253, 48);
+			if (!PotionForca.primeira) {
+				g.drawImage(PotionForca.imgPot, 238, 32, null);
+				g.drawString("" + PotionForca.quantos, 253, 48);
 			}
 		}
 

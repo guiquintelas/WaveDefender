@@ -228,7 +228,7 @@ public class PathFinding {
 	
 	
 	private void empurrao() {
-		System.out.println("Empurrou: " + (forcaEmpurrao + empurroesSeguidos) + " de força");
+		System.out.println("Empurrou: " + (forcaEmpurrao + empurroesSeguidos) + " de forca");
 		d.setX(d.getXDouble() + Math.cos(Math.toRadians(angulo)) * forcaEmpurrao + empurroesSeguidos);
 		d.setY(d.getYDouble() - Math.sin(Math.toRadians(angulo)) * forcaEmpurrao + empurroesSeguidos);	
 		empurroesSeguidos++;

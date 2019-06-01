@@ -23,7 +23,7 @@ public class MonstroPadrao extends Monstro {
 		int random = 1 + (int)(Math.random() * 1000);
 		if (random <= 2 && isFurioso  && ProjetilGround.todosGProjetils.size() < 1) {
 			new ProjetilGround(getXCentro(), getYSpriteCentro(), getDanoVar());
-			lançaProjetilSFX.play();
+			lancaProjetilSFX.play();
 		}
 	}
 	
@@ -35,8 +35,8 @@ public class MonstroPadrao extends Monstro {
 		if (tutorial) {
 			dropper.addItem(Dropper.MOCHILA, 100);
 			dropper.addItem(Dropper.POTION_VIDA, 100);
-			//dropper.addItem(Dropper.POTION_FORÇA, 100);
-			//dropper.addItem(Dropper.POTION_FORÇA, 100);
+			//dropper.addItem(Dropper.POTION_FORcA, 100);
+			//dropper.addItem(Dropper.POTION_FORcA, 100);
 			//dropper.addItem(Dropper.GOLD_HELMET, 100);
 			//dropper.addItem(Dropper.GOLD_ARMOR, 100);
 			//dropper.addItem(Dropper.GOLD_LEGS, 100);

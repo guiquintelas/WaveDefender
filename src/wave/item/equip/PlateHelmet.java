@@ -13,7 +13,7 @@ public class PlateHelmet extends Equip{
 	private CriadorDeParticulas particulasBrilho;
 
 	public PlateHelmet(int x, int y) {
-		super(x, y, 25, 29, Equip.CABEÇA);
+		super(x, y, 25, 29, Equip.CABECA);
 		danoBonus = Util.randomInt(1, 3);
 		
 		particulasBrilho = CDPProntos.brilho(this, getX(), getY(), width, height);
@@ -54,7 +54,7 @@ public class PlateHelmet extends Equip{
 
 	@Override
 	public String getText() {
-		return "Um helmet forjado com um forte metal. Resistente ele te trasmite uma aura de força. Defesa +3, Dano +" + getDano();
+		return "Um helmet forjado com um forte metal. Resistente ele te trasmite uma aura de forca. Defesa +3, Dano +" + getDano();
 	}
 	
 	

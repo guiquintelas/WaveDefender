@@ -171,7 +171,7 @@ public abstract class Chest extends DimensionalObj {
 			
 			bau.addItem(Dropper.POTION_VIDA, 100, null);
 			bau.addItem(Dropper.POTION_VIDA, 50, null);
-			bau.addItem(Dropper.POTION_FORÇA, 40, null);
+			bau.addItem(Dropper.POTION_FORCA, 40, null);
 			bau.setExp(75);
 		}
 		
@@ -203,8 +203,8 @@ public abstract class Chest extends DimensionalObj {
 				
 			bau.addItem(Dropper.POTION_VIDA, 100, null);
 			bau.addItem(Dropper.POTION_VIDA, 50, null);
-			bau.addItem(Dropper.POTION_FORÇA, 100, null);
-			bau.addItem(Dropper.POTION_FORÇA, 20, null);
+			bau.addItem(Dropper.POTION_FORCA, 100, null);
+			bau.addItem(Dropper.POTION_FORCA, 20, null);
 			bau.setExp(250);
 		}
 	}

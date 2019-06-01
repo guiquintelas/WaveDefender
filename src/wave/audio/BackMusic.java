@@ -61,7 +61,7 @@ public class BackMusic {
 		
 	}
 	
-	public synchronized static void reduzir(final int tickDuraçao, final int duraçaoFade) {	
+	public synchronized static void reduzir(final int tickDuracao, final int duracaoFade) {	
 		if (timerReduzir != null) {
 			if (timerReduzir.isRunning()) {
 				return;
@@ -77,9 +77,9 @@ public class BackMusic {
 		timerReduzir = new Timer(5, new ActionListener() {
 			int tickAtual = Principal.tickTotal;
 			public void actionPerformed(ActionEvent e) {
-				if (Principal.tickTotal >= tickAtual + tickDuraçao) {
+				if (Principal.tickTotal >= tickAtual + tickDuracao) {
 					
-					setVolume(Musica.volume + (diferVol / (float)duraçaoFade));
+					setVolume(Musica.volume + (diferVol / (float)duracaoFade));
 					if (Musica.volume >= volumeTemp) {
 						Musica.volume = volumeTemp;
 						timerReduzir.stop();

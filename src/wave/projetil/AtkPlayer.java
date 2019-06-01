@@ -6,8 +6,8 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import wave.audio.RandomSFXGrupo;
-import wave.graphics.animaçao.Animaçao;
-import wave.graphics.animaçao.AnimaçaoListener;
+import wave.graphics.animacao.Animacao;
+import wave.graphics.animacao.AnimacaoListener;
 import wave.graphics.imgprocessing.Filter;
 import wave.graphics.light.Luz;
 import wave.gui.menus.MenuLevel;
@@ -18,13 +18,13 @@ import wave.tools.ActionQueue;
 import wave.tools.Util;
 
 public class AtkPlayer extends AutoAtkProjetil {
-	private static final ArrayList<BufferedImage> imgsColisao = Util.carregarArrayBI(Animaçao.explosaoSrite, 0, 256, 64, 64, 39);
+	private static final ArrayList<BufferedImage> imgsColisao = Util.carregarArrayBI(Animacao.explosaoSrite, 0, 256, 64, 64, 39);
 	private static final BufferedImage spriteSheet = Util.carregarImg("/Sprites/playerAtkAni.png");
 	private static final BufferedImage img = spriteSheet.getSubimage(85, 0, 17, 17);
 	private static final BufferedImage imgVeneno = Filter.soVerde(img, 0);
 	private static final ArrayList<BufferedImage> aniImgs = Util.carregarArrayBI(spriteSheet, 0, 0, 17, 17, 6);
 	private static final ArrayList<BufferedImage> aniImgsVeneno = Util.carregarArrayBI(Filter.soVerde(spriteSheet, 0), 0, 0, 17, 17, 6);
-	private Animaçao ani;
+	private Animacao ani;
 	
 	private boolean isVeneno = false;
 	
@@ -62,14 +62,14 @@ public class AtkPlayer extends AutoAtkProjetil {
 		}
 		
 		if (isVeneno) {
-			ani = new Animaçao(getXCentro(), getYCentro(), aniImgsVeneno, 3);
+			ani = new Animacao(getXCentro(), getYCentro(), aniImgsVeneno, 3);
 		} else {
-			ani = new Animaçao(getXCentro(), getYCentro(), aniImgs, 3);
+			ani = new Animacao(getXCentro(), getYCentro(), aniImgs, 3);
 		}
 		
 		ani.setSeguindo(this);
 		ani.setAutoPaint(false);
-		ani.setVoid(5, new AnimaçaoListener() {
+		ani.setVoid(5, new AnimacaoListener() {
 			public void metodo() {
 				speed = 5;
 				particulas.setProduzindo(true);
@@ -100,12 +100,12 @@ public class AtkPlayer extends AutoAtkProjetil {
 					monstroAtual.setFurioso(true);
 					particulas.setProduzindo(false);
 					
-					Animaçao ani = new Animaçao(getXCentro(), getYCentro(), imgsColisao, 1);
+					Animacao ani = new Animacao(getXCentro(), getYCentro(), imgsColisao, 1);
 					ani.setScale(getScalePorDano(danoDado));
 					ani.start();
 					
 					final Luz luzAni = new Luz(ani, ani.getWidth() / 2 + 5, 255, 220, 200, 100, 15, true, true, 0, 0);
-					luzAni.forçaVar.addAcaoNaFila(new ActionQueue() {
+					luzAni.forcaVar.addAcaoNaFila(new ActionQueue() {
 						public boolean action() {
 							luzAni.desativar(15);
 							return true;

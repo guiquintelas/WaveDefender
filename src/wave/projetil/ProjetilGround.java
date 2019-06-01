@@ -4,14 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import wave.graphics.animaçao.Animaçao;
+import wave.graphics.animacao.Animacao;
 import wave.graphics.light.Luz;
 import wave.mob.Player;
 import wave.particula.CriadorDeParticulas;
 
 public class ProjetilGround extends ProjetilPerseguidorMob {
 	private float anguloRotacao = 0;
-	private Animaçao ani;
+	private Animacao ani;
 	private CriadorDeParticulas particulas;
 	
 	private Luz luz;
@@ -26,7 +26,7 @@ public class ProjetilGround extends ProjetilPerseguidorMob {
 		particulas.addColor(new Color(34, 139, 34));
 		particulas.setProduzindo(true);
 		
-		ani = new Animaçao(getXCentro(), getYCentro(), Animaçao.groundProImgs, 3);
+		ani = new Animacao(getXCentro(), getYCentro(), Animacao.groundProImgs, 3);
 		ani.setVaiVolta(true);
 		ani.setLoop(true);
 		ani.setAutoPaint(false);
@@ -77,8 +77,8 @@ public class ProjetilGround extends ProjetilPerseguidorMob {
 		luz.desativar();
 	}
 	
-	protected void autoDestruiçao() {
-		super.autoDestruiçao();
+	protected void autoDestruicao() {
+		super.autoDestruicao();
 		todosGProjetils.remove(this);
 		luz.desativar();
 	}

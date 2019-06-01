@@ -19,13 +19,13 @@ public class Luz {
 	protected int r;
 	protected int g;
 	protected int b;
-	protected double força;
+	protected double forca;
 	
 	protected int xOff = 0;
 	protected int yOff = 0;
 	
 	private int raioNovo;
-	private double forçaNova;
+	private double forcaNova;
 	private int rNovo;
 	private int gNovo;
 	private int bNovo;
@@ -39,7 +39,7 @@ public class Luz {
 	public byte[] pixelLuzA;
 
 	public Variator raioVar;
-	public Variator forçaVar;
+	public Variator forcaVar;
 
 	public static ArrayList<Luz> todasLuz = new ArrayList<Luz>();
 
@@ -50,7 +50,7 @@ public class Luz {
 		this.r = r;
 		this.g = g;
 		this.b = b;
-		this.força = forca;
+		this.forca = forca;
 
 		getLista().add(this);
 
@@ -58,32 +58,32 @@ public class Luz {
 		checaUpdateImg();
 	}
 
-	public Luz(Dimensional d, int raio, int r, int g, int b, double forca, int fade, boolean variarRaio, boolean variarForça, int oscRaio, int oscForça) {
+	public Luz(Dimensional d, int raio, int r, int g, int b, double forca, int fade, boolean variarRaio, boolean variarForca, int oscRaio, int oscForca) {
 		this.d = d;
 		this.raio = raio;
 		this.raioFixo = raio;
 		this.r = r;
 		this.g = g;
 		this.b = b;
-		this.força = forca;
+		this.forca = forca;
 
 		getLista().add(this);
 
-		init(fade, variarRaio, variarForça, oscRaio, oscForça);
+		init(fade, variarRaio, variarForca, oscRaio, oscForca);
 		checaUpdateImg();
 		//updateImgLuz();
 	}
 	
 	public static void setLuzesAtivas(boolean ativa) {
 		for (int i = 0; i < todasLuz.size(); i++) {
-			todasLuz.get(i).forçaVar.setAtivo(ativa);
+			todasLuz.get(i).forcaVar.setAtivo(ativa);
 			todasLuz.get(i).raioVar.setAtivo(ativa);
 		}
 	}
 
-	private void init(int fade, boolean variarRaio, boolean variarForça, final int oscRaio, final int oscForça) {
+	private void init(int fade, boolean variarRaio, boolean variarForca, final int oscRaio, final int oscForca) {
 		this.raioNovo = raio;
-		this.forçaNova = força;
+		this.forcaNova = forca;
 		this.rNovo = r;
 		this.gNovo = g;
 		this.bNovo = b;
@@ -122,14 +122,14 @@ public class Luz {
 			
 		}
 
-		forçaVar = new Variator(new VariatorNumero() {
+		forcaVar = new Variator(new VariatorNumero() {
 			public void setNumero(double numero) {
 				if (numero > 100) numero = 100;
-				setForça(numero);
+				setForca(numero);
 			}
 
 			public double getNumero() {
-				return getForça();
+				return getForca();
 			}
 
 			public boolean devoContinuar() {
@@ -137,18 +137,18 @@ public class Luz {
 			}
 		});
 
-		if (variarForça) {
+		if (variarForca) {
 			
 			if (fade != 0) {
-				forçaVar.fadeIn(0, força - oscForça, fade);
-				forçaVar.variar(true);
+				forcaVar.fadeIn(0, forca - oscForca, fade);
+				forcaVar.variar(true);
 			}			
 			
-			if (oscForça != 0) {
-				forçaVar.addAcaoNaFila(new ActionQueue() {
+			if (oscForca != 0) {
+				forcaVar.addAcaoNaFila(new ActionQueue() {
 					public boolean action() {
-						forçaVar.oscilar(oscForça, 200, true);
-						forçaVar.variar(true);
+						forcaVar.oscilar(oscForca, 200, true);
+						forcaVar.variar(true);
 						return true;
 					}
 				});
@@ -157,7 +157,7 @@ public class Luz {
 		}
 		
 		raioVar.setAtivo(Principal.light);
-		forçaVar.setAtivo(Principal.light);
+		forcaVar.setAtivo(Principal.light);
 	}
 	
 	protected ArrayList<Luz> getLista() {
@@ -178,9 +178,9 @@ public class Luz {
 
 				if (dist < raio) {
 					//pixelLuzA[index] = (byte) 255;
-					pixelLuzA[index ] = (byte) (((b / (double) raio) * (raio - dist)) / (100 / força));
-					pixelLuzA[index + 1] = (byte) (((g / (double) raio) * (raio - dist)) / (100 / força));
-					pixelLuzA[index + 2] = (byte) (((r / (double) raio) * (raio - dist)) / (100 / força));
+					pixelLuzA[index ] = (byte) (((b / (double) raio) * (raio - dist)) / (100 / forca));
+					pixelLuzA[index + 1] = (byte) (((g / (double) raio) * (raio - dist)) / (100 / forca));
+					pixelLuzA[index + 2] = (byte) (((r / (double) raio) * (raio - dist)) / (100 / forca));
 
 				} else {
 					continue;
@@ -191,7 +191,7 @@ public class Luz {
 	
 	public void setAtiva(boolean isAtivo) {
 		this.isAtivo = isAtivo;
-		forçaVar.setAtivo(isAtivo);
+		forcaVar.setAtivo(isAtivo);
 		raioVar.setAtivo(isAtivo);
 	}
 
@@ -205,7 +205,7 @@ public class Luz {
 		if (needUpdate) {
 			raio = raioNovo;
 			diametro = raio * 2;
-			força = forçaNova;
+			forca = forcaNova;
 			r = rNovo;
 			g = gNovo;
 			b = bNovo;
@@ -285,12 +285,12 @@ public class Luz {
 		if (desativando) return;
 		desativando = true;
 		raioVar.variar(false);
-		forçaVar.variar(false);
+		forcaVar.variar(false);
 		
 		raioVar.fadeOutSin(raio, 0, 25);
 		raioVar.variar(true);
-		forçaVar.fadeOutSin(força, 0, 25);
-		forçaVar.variar(true);
+		forcaVar.fadeOutSin(forca, 0, 25);
+		forcaVar.variar(true);
 		raioVar.addAcaoNaFila(new ActionQueue() {
 			public boolean action() {
 				desativarTotal();
@@ -307,12 +307,12 @@ public class Luz {
 		}
 		desativando = true;
 		raioVar.variar(false);
-		forçaVar.variar(false);
+		forcaVar.variar(false);
 
 		raioVar.fadeOutSin(raio, 0, fadeOut);
 		raioVar.variar(true);
-		forçaVar.fadeOutSin(força, 0, fadeOut);
-		forçaVar.variar(true);
+		forcaVar.fadeOutSin(forca, 0, fadeOut);
+		forcaVar.variar(true);
 		raioVar.addAcaoNaFila(new ActionQueue() {
 			public boolean action() {
 				desativarTotal();			
@@ -323,19 +323,19 @@ public class Luz {
 
 	public void desativarTotal() {
 		raioVar.desativar();
-		forçaVar.desativar();
+		forcaVar.desativar();
 		getLista().remove(this);
 	}
 
-	public double getForça() {
-		return forçaNova;
+	public double getForca() {
+		return forcaNova;
 	}
 
-	public void setForça(double força) {
-		if (this.força == força) return;
-		if (força > 100) força = 100;
-		if (força < 0) força = 0;
-		this.forçaNova = força;
+	public void setForca(double forca) {
+		if (this.forca == forca) return;
+		if (forca > 100) forca = 100;
+		if (forca < 0) forca = 0;
+		this.forcaNova = forca;
 		needUpdate = true;
 	}
 	

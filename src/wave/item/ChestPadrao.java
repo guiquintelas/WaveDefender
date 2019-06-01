@@ -2,8 +2,8 @@ package wave.item;
 
 import java.awt.image.BufferedImage;
 
-import wave.graphics.animaçao.Animaçao;
-import wave.graphics.animaçao.AnimaçaoListener;
+import wave.graphics.animacao.Animacao;
+import wave.graphics.animacao.AnimacaoListener;
 import wave.graphics.light.Luz;
 import wave.mob.Player;
 import wave.particula.CDPProntos;
@@ -13,7 +13,7 @@ public class ChestPadrao extends Chest{
 	
 	private int exp = 0;
 	
-	private Animaçao ani;
+	private Animacao ani;
 	
 	private CriadorDeParticulas particulasBrilho = null;
 
@@ -22,22 +22,22 @@ public class ChestPadrao extends Chest{
 		
 		switch (tipo) {
 		case AZUL:
-			ani = new Animaçao(getXCentro(), getYCentro(), bauAzImgs, 10);
+			ani = new Animacao(getXCentro(), getYCentro(), bauAzImgs, 10);
 			particulasBrilho = CDPProntos.brilho(this, getX(), getY(), width, height);
 			break;
 		case PADRAO:
-			ani = new Animaçao(getXCentro(), getYCentro(), bauImgs, 10);
+			ani = new Animacao(getXCentro(), getYCentro(), bauImgs, 10);
 			break;
 		case VERMELHO:
-			ani = new Animaçao(getXCentro(), getYCentro(), bauVerImgs, 10);
+			ani = new Animacao(getXCentro(), getYCentro(), bauVerImgs, 10);
 			particulasBrilho = CDPProntos.brilho(this, getX(), getY(), width, height);
 			break;
 		default:
-			ani = new Animaçao(getXCentro(), getYCentro(), bauImgs, 10);
+			ani = new Animacao(getXCentro(), getYCentro(), bauImgs, 10);
 			break;
 		}
 		
-		ani.setVoid(3, new AnimaçaoListener() {
+		ani.setVoid(3, new AnimacaoListener() {
 			public void metodo() {
 				remove();
 				dropper.droppar();	

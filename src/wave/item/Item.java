@@ -99,9 +99,9 @@ public abstract class Item extends DimensionalObj {
 		if (JanelaJogo.xMouse > getX() && JanelaJogo.xMouse < getX() + width) {
 			if (JanelaJogo.yMouse > getY() && JanelaJogo.yMouse < getY() + height) {
 				if (!isSel) {
-					luz.forçaVar.variar(false);
-					luz.forçaVar.fadeIn(luz.getForça(), 100, 25);
-					luz.forçaVar.variar(true);
+					luz.forcaVar.variar(false);
+					luz.forcaVar.fadeIn(luz.getForca(), 100, 25);
+					luz.forcaVar.variar(true);
 				}
 				isSel = true;
 				
@@ -110,9 +110,9 @@ public abstract class Item extends DimensionalObj {
 		}
 		
 		if (isSel) {
-			luz.forçaVar.variar(false);
-			luz.forçaVar.fadeOut(luz.getForça(), 50, 25);
-			luz.forçaVar.variar(true);
+			luz.forcaVar.variar(false);
+			luz.forcaVar.fadeOut(luz.getForca(), 50, 25);
+			luz.forcaVar.variar(true);
 		}
 		isSel = false;
 	}

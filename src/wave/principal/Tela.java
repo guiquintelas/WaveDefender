@@ -12,19 +12,19 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 import wave.graphics.BalaoDeFala;
-import wave.graphics.ExpValorGanhaAnimaçao;
+import wave.graphics.ExpValorGanhaAnimacao;
 import wave.graphics.Grafico;
-import wave.graphics.ModValorAnimaçao;
-import wave.graphics.NovoStatusAnimaçao;
+import wave.graphics.ModValorAnimacao;
+import wave.graphics.NovoStatusAnimacao;
 import wave.graphics.Sangue;
-import wave.graphics.animaçao.Animaçao;
-import wave.graphics.animaçao.AnimaçaoInterface;
+import wave.graphics.animacao.Animacao;
+import wave.graphics.animacao.AnimacaoInterface;
 import wave.graphics.imgprocessing.Filter;
 import wave.graphics.light.Luz;
 import wave.graphics.light.LuzAmbiente;
 import wave.graphics.light.LuzBruta;
 import wave.gui.BarrasSuperiores;
-import wave.gui.DescriçaoBox;
+import wave.gui.DescricaoBox;
 import wave.gui.DisplayNomes;
 import wave.gui.GUI;
 import wave.gui.menus.MenuChar;
@@ -174,9 +174,9 @@ public class Tela extends JPanel implements Runnable {
 		if (Principal.isNivelFinalizado) {
 			g.setFont(new Font("Arial", Font.BOLD, 29));
 			g.setColor(Color.YELLOW);
-			g.drawString("Parabens, fase completa! Precione SPACE para começar a fase " + Principal.nivel, 41, 221);
+			g.drawString("Parabens, fase completa! Precione SPACE para comecar a fase " + Principal.nivel, 41, 221);
 			g.setColor(Color.BLACK);
-			g.drawString("Parabens, fase completa! Precione SPACE para começar a fase " + Principal.nivel, 40, 220);
+			g.drawString("Parabens, fase completa! Precione SPACE para comecar a fase " + Principal.nivel, 40, 220);
 		}
 
 	}
@@ -218,11 +218,11 @@ public class Tela extends JPanel implements Runnable {
 					pintarPausado();
 				}
 		
-				if (Principal.menuOpçoes()) MenuOpcoes.pintar(Tela.g);
+				if (Principal.menuOpcoes()) MenuOpcoes.pintar(Tela.g);
 				if (Principal.menuMochila) MenuMochila.pintar(Tela.g);
 				if (Principal.menuChar) MenuChar.pintar(Tela.g);
 				if (Principal.menuLevel) MenuLevel.pintar(Tela.g);
-				pintarDescriçaoBox();
+				pintarDescricaoBox();
 				if (Principal.showFPS) pintarFPSTPS(Tela.g);
 				if (Principal.grafico) Grafico.pintar(Tela.g);
 			
@@ -322,14 +322,14 @@ public class Tela extends JPanel implements Runnable {
 	}
 
 	private void pintarModAni() {
-		for (int x = 0; x < ModValorAnimaçao.todosModAni.size(); x++) {
-			ModValorAnimaçao.todosModAni.get(x).pintar(g);
+		for (int x = 0; x < ModValorAnimacao.todosModAni.size(); x++) {
+			ModValorAnimacao.todosModAni.get(x).pintar(g);
 		}
 	}
 
 	private void pintarNovoStatusAni() {
-		for (int x = 0; x < NovoStatusAnimaçao.todasStatusAni.size(); x++) {
-			NovoStatusAnimaçao.todasStatusAni.get(x).pintar(g);
+		for (int x = 0; x < NovoStatusAnimacao.todasStatusAni.size(); x++) {
+			NovoStatusAnimacao.todasStatusAni.get(x).pintar(g);
 		}
 	}
 
@@ -354,13 +354,13 @@ public class Tela extends JPanel implements Runnable {
 		}
 	}
 
-	private void pintarDescriçaoBox() {
+	private void pintarDescricaoBox() {
 		
-			DescriçaoBox.pintarNaGUI(gGUI);
+			DescricaoBox.pintarNaGUI(gGUI);
 		
 
 		
-			DescriçaoBox.pintarNoJogo(g);
+			DescricaoBox.pintarNoJogo(g);
 		
 	}
 
@@ -393,8 +393,8 @@ public class Tela extends JPanel implements Runnable {
 	}
 
 	private void pintarExpGanho() {
-		for (int x = 0; x < ExpValorGanhaAnimaçao.todasExps.size(); x++) {
-			ExpValorGanhaAnimaçao.todasExps.get(x).pintar(g);
+		for (int x = 0; x < ExpValorGanhaAnimacao.todasExps.size(); x++) {
+			ExpValorGanhaAnimacao.todasExps.get(x).pintar(g);
 		}
 	}
 
@@ -407,8 +407,8 @@ public class Tela extends JPanel implements Runnable {
 	}
 	
 	private void pintarAni() {
-		for (int x = 0; x < Animaçao.todasAni.size(); x++) {
-			AnimaçaoInterface.todasAni.get(x).pintar(g);
+		for (int x = 0; x < Animacao.todasAni.size(); x++) {
+			AnimacaoInterface.todasAni.get(x).pintar(g);
 		}
 	}
 	
