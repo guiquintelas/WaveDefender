@@ -71,7 +71,10 @@ public class Principal implements Runnable {
 	public static final int TPS = 50;
 	public static int nivel = 1;
 	public static boolean isNivelFinalizado = false;
+
 	private static final int DELAY_NOVO_NIVEL = 50; //1 segundo
+	private static final String VERSAO = "1.0.6";
+
 	private Thread thread;
 
 	public static BackMusic musicas;
@@ -105,7 +108,7 @@ public class Principal implements Runnable {
 
 		
 		tela = new Tela();
-		janela = new JanelaJogo("Wave Defender 1.0.4", tela, this);
+		janela = new JanelaJogo("Wave Defender " + VERSAO, tela, this);
 		new ListenerManager().init(JanelaJogo.janela);
 		GUI.init();
 		janela.init();
@@ -503,7 +506,6 @@ public class Principal implements Runnable {
 		}
 
 		String nativePath = FileSystems.getDefault().getPath("./native").normalize().toAbsolutePath().toString();
-
 		System.setProperty("org.lwjgl.librarypath", nativePath);
 
 		@SuppressWarnings("unused")
